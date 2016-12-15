@@ -15,7 +15,11 @@ export default class ScrollUp extends React.Component {
         //TransitionBtnPosition = position at which we want the button to show.
         if (window.pageYOffset > this.props.TransitionBtnPosition) {
             //styles.Toggled = the class name we want applied to transition the button in.
-            this.setState({ToggleScrollUp: this.props.transitionClass});
+            if(this.props.children){
+              this.setState({ToggleScrollUp: this.props.transitionClass});
+            }else{
+              this.setState({ToggleScrollUp: styles.Toggled});
+            }
         } else {
             //remove the class name
             this.setState({ToggleScrollUp: ''});
