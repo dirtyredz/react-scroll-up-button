@@ -48,6 +48,57 @@ export default class ScrollUp extends React.Component {
 
         //if we hit the StopPosition, StopScrollingFrame()
         if (window.pageYOffset <= this.props.StopPosition) {
+import React from "react";
+import TweenFunctions from "tween-functions";
+
+import styles from './ScrollUpButton.css';
+
+export default class ScrollUpButton extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={ToggleScrollUp: ''};
+        this.Animation = {StartPosition: 0, CurrentAnimationTime: 0, StartTime:null,AnimationFrame:null}
+    }
+
+    HandleScroll() {
+        //window.pageYOffset = current scroll position
+        //TransitionBtnPosition = position at which we want the button to show.
+        if (window.pageYOffset > this.props.TransitionBtnPosition) {
+            //styles.Toggled = the class name we want applied to transition the button in.
+            if(this.props.children){
+              this.setState({ToggleScrollUp: this.props.TransitionClassName});
+            }else{
+              this.setState({ToggleScrollUp: styles.Toggled});
+            }
+
+        } else {
+            //remove the class name
+            this.setState({ToggleScrollUp: ''});
+        }
+    }
+
+    HandleClick() {
+        this.StopScrollingFrame();//Stoping all AnimationFrames
+        this.Animation.StartPosition = window.pageYOffset;//current scroll position
+        this.Animation.CurrentAnimationTime = 0;
+        this.Animation.StartTime = null;
+        //Start the scrolling animation.
+        this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame.bind(this));
+    }
+
+    ScrollingFrame(timestamp) {
+        //Retrieve timestamp from window.requestAnimationFrame
+        //If StartTime has not been assigned a value, assign it the start timestamp.
+        if (!this.Animation.StartTime) {
+            this.Animation.StartTime = timestamp;
+        }
+
+        //set CurrentAnimationTime every iteration of ScrollingFrame()
+        this.Animation.CurrentAnimationTime = timestamp - this.Animation.StartTime;
+
+
+        //if we hit the StopPosition, StopScrollingFrame()
+        if (window.pageYOffset <= this.props.StopPosition) {
             this.StopScrollingFrame();
         } else {
             //Otherwise continue ScrollingFrame to the StopPosition.
@@ -89,14 +140,14 @@ export default class ScrollUp extends React.Component {
          })
         );
         return(
-          <aside class={this.props.className + " " + this.state.ToggleScrollUp} onClick={this.HandleClick.bind(this)}>
+          <aside class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick.bind(this)}>
             {childrenWithProps}
           </aside>
         );
       }else{
         return(
-          <aside class={this.props.className + " " + this.state.ToggleScrollUp} onClick={this.HandleClick.bind(this)}>
-              <svg class="ScrollUp__SVG__DR11" viewBox="0 0 32 32" >
+          <aside class={styles.ScrollUp + " " + this.state.ToggleScrollUp} onClick={this.HandleClick.bind(this)}>
+              <svg class={styles.SVG} viewBox="0 0 32 32" >
                   <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
               </svg>
           </aside>
@@ -116,10 +167,11 @@ ScrollUp.propTypes ={
   AnimationDuration: React.PropTypes.number // seconds
 }
 ScrollUp.defaultProps  = {
-    className: 'ScrollUp__Aside__DR22',
+    ContainerClassName: 'ScrollUpButton__Container',
     StopPosition: 0,
     TransitionBtnPosition: 150,
     EasingType: 'easeOutCubic',
     AnimationDuration: 500,
-    transitionClass: 'ScrollUp__Toggled__DR33',
+    TransitionClassName: 'ScrollUpButton__Toggled',
 }
+
