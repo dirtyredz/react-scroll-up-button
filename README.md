@@ -2,6 +2,10 @@
 
 # react-scroll-up
 React Component for a fixed scroll to top button.
+The button can use the default button, or can be customized to look like any button you want.
+The component contains all the code neccassary to scroll to the top of the page (Or desired position) Utilizing Easing effects.
+
+I am also adding many different style buttons that you can copy and paste into this component to quickly acheive a style you can appreciate and fits your websites look and feel.
 
 
 ## Install
