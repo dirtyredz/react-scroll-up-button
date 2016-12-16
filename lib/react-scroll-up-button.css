@@ -1,0 +1,28 @@
+.SVG{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    stroke-width: 0;
+    stroke: white;
+    fill: white;
+    padding-left: 10px;
+}
+
+
+.ScrollUp{
+    background-color: rgba(50, 50, 50, 0.5);
+    height: 50px;
+    position: fixed;
+    bottom: 20px;
+    width: 50px;
+    transition: all 0.5s ease-in-out;
+    transition-property: opacity, right;
+    cursor: pointer;
+    opacity: 0;
+    right: -50px;
+}
+
+.Toggled{
+  opacity: 1;
+  right: 20px;
+}
