@@ -66,6 +66,7 @@ export default class Index extends React.Component {
     }
 ```
 ###Themed Buttons:
+
 ####Verticle_Button:
 ![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 
@@ -106,6 +107,6 @@ Verticle_Button | CSS:
       right: 10px;
     }
 ```
+
+
 ###More To Come Soon!!
-
-
