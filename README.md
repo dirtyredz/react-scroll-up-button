@@ -70,6 +70,44 @@ export default class Index extends React.Component {
 ![default_button](https://cloud.githubusercontent.com/assets/7119499/21240547/5c47751a-c2d1-11e6-9df8-5be7bbdd53de.png)
 ####Verticle_Button:
 ![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
+
+Using Css-Modules:
+```
+    <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
+      <span class={styles.BTN}>UP &#8594;</span>
+    </ScrollUpButton>
+```
+Without Css-Modules:
+```
+    <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
+      <span class="BTN">UP &#8594;</span>
+    </ScrollUpButton>
+```
+CSS:
+```
+    .BTN{
+      font-size: 23px;
+    }
+    .ScrollUpButton__Container{
+      background-color: rgb(58, 56, 56);
+      position: fixed;
+      padding: 5px 10px;
+      bottom: 60px;
+      -webkit-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+      -webkit-transition-property: opacity, right;
+      transition-property: opacity, right;
+      cursor: pointer;
+      opacity: 0;
+      right: -75px;
+      transform: rotate(-90deg);
+    }
+
+    .ScrollUpButton__Toggled{
+      opacity: 1;
+      right: 10px;
+    }
+```
 ###More To Come Soon!!
 
 
