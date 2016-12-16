@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/react-scroll-up-button.svg)](https://badge.fury.io/js/react-scroll-up-button)[![npm](https://img.shields.io/npm/l/express.svg)]()
+
 # react-scroll-up
 React Component for a fixed scroll to top button.
 
@@ -108,5 +110,8 @@ Verticle_Button | CSS:
     }
 ```
 
-
 ###More To Come Soon!!
+
+###Credit
+I was inspired by: https://github.com/milosjanda/react-scroll-up
+With the base recource of the repo i was able to create my own in my style with additional functionality.

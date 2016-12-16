@@ -4,7 +4,7 @@
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
     "compile": "babel --presets react,es2015,stage-0 --plugins react-html-attrs,transform-decorators-legacy,transform-class-properties -d lib/ src/",
-    "css":   "cp src/react-scroll-up-button.css lib/",
+    "css":   "copyfiles react-scroll-up-button.css lib/",
     "prepublish": "npm run compile && npm run css"
   },
   "main": "lib/react-scroll-up-button.js",
