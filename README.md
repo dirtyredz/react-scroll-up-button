@@ -74,31 +74,31 @@ export default class Index extends React.Component {
 ###Themed Buttons:
 Click on a button to see its code.
 
-Verticle Button | Circle Arrow Button
+Vertical Button | Circle Arrow Button
 :---: | :---: 
-[![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#verticle-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button) 
+[![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button) 
            
 
 
 
 
-------------------------
-####Verticle Button:
-![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
+<h1>_____________________________________________________________________________________________</h1>
+####Vertical Button:
+![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 
-Verticle_Button | Using Css-Modules:
+Vertical_Button | Using Css-Modules:
 ```
     <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
       <span class={styles.BTN}>UP &#8594;</span>
     </ScrollUpButton>
 ```
-Verticle_Button | Without Css-Modules:
+Vertical_Button | Without Css-Modules:
 ```
     <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
       <span class="BTN">UP &#8594;</span>
     </ScrollUpButton>
 ```
-Verticle_Button | CSS:
+Vertical_Button | CSS:
 ```
     .BTN{
       font-size: 23px;
