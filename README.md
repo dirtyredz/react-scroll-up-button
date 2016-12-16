@@ -14,6 +14,8 @@ I am also adding many different style buttons that you can copy and paste into t
 npm install react-scroll-up-button
 ```
 
+----
+
 ## Usage
 
 ###Default Button:   ![default_button](https://cloud.githubusercontent.com/assets/7119499/21240547/5c47751a-c2d1-11e6-9df8-5be7bbdd53de.png)
@@ -32,6 +34,8 @@ export default class Index extends React.Component {
 }
 
 ```
+
+----
 
 ###Custom Button:
 ```jsx
@@ -58,7 +62,7 @@ export default class Index extends React.Component {
     }
 }
 ```
-
+----
 
 ###Configuration:
 ```javascript
@@ -82,7 +86,7 @@ Vertical Button | Circle Arrow Button
 
 
 
-<h1>_____________________________________________________________________________________________</h1>
+<h1>__________________________________________________________________</h1>
 ####Vertical Button:
 ![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 
@@ -123,7 +127,7 @@ Vertical_Button | CSS:
       right: 10px;
     }
 ```
-------------------------------------------------------------
+<h1>__________________________________________________________________</h1>
 
 ####Circle Arrow Button:
 ![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
