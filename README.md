@@ -72,7 +72,7 @@ export default class Index extends React.Component {
     }
 ```
 ###Themed Buttons:
-[Verticle Button](#verticle-button)
+[![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#verticle-button)
 [Circle Arrow Button](#circle-arrow-button)
 ![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)                                 ![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
 
