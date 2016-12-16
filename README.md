@@ -68,6 +68,8 @@ export default class Index extends React.Component {
 ###Themed Buttons:
 ####Default: 
 ![default_button](https://cloud.githubusercontent.com/assets/7119499/21240547/5c47751a-c2d1-11e6-9df8-5be7bbdd53de.png)
+####Verticle_Button:
+![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 ###More To Come Soon!!
 
 
