@@ -72,14 +72,14 @@ export default class Index extends React.Component {
     }
 ```
 ###Themed Buttons:
-[Verticle Button](#Verticle_Button)
-[Circle Arrow Button](#Circle_Arrow_Button)
+[Verticle Button](#Verticle-Button)
+[Circle Arrow Button](#Circle-Arrow-Button)
 ![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)                                 ![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
 
 
 
 ------------------------
-####Verticle_Button:
+####Verticle Button:
 ![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 
 Verticle_Button | Using Css-Modules:
@@ -121,7 +121,7 @@ Verticle_Button | CSS:
 ```
 ------------------------------------------------------------
 
-####Circle_Arrow_Button:
+####Circle Arrow Button:
 ![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
 
 Circle_Arrow_Button | Using Css-Modules:
