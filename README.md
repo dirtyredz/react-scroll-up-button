@@ -66,24 +66,22 @@ export default class Index extends React.Component {
     }
 ```
 ###Themed Buttons:
-####Default: 
-![default_button](https://cloud.githubusercontent.com/assets/7119499/21240547/5c47751a-c2d1-11e6-9df8-5be7bbdd53de.png)
 ####Verticle_Button:
 ![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 
-Using Css-Modules:
+Verticle_Button | Using Css-Modules:
 ```
     <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
       <span class={styles.BTN}>UP &#8594;</span>
     </ScrollUpButton>
 ```
-Without Css-Modules:
+Verticle_Button | Without Css-Modules:
 ```
     <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
       <span class="BTN">UP &#8594;</span>
     </ScrollUpButton>
 ```
-CSS:
+Verticle_Button | CSS:
 ```
     .BTN{
       font-size: 23px;
