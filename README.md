@@ -72,6 +72,10 @@ export default class Index extends React.Component {
     }
 ```
 ###Themed Buttons:
+![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
+
+
+
 
 ####Verticle_Button:
 ![verticle_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
@@ -113,6 +117,53 @@ Verticle_Button | CSS:
       right: 10px;
     }
 ```
+------------------------------------------------------------
+
+####Circle_Arrow_Button:
+![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
+
+Circle_Arrow_Button | Using Css-Modules:
+```
+    <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
+      <span class={styles.BTN}>UP &#8594;</span>
+    </ScrollUpButton>
+```
+Circle_Arrow_Button | Without Css-Modules:
+```
+    <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
+      <span class="BTN">UP &#8594;</span>
+    </ScrollUpButton>
+```
+Circle_Arrow_Button | CSS:
+```
+    .BTN{
+      padding-left: 1px;
+    }
+    .ScrollUpButton__Container{
+      background-color: rgb(255, 255, 255);
+      border-radius: 50%;
+      border: 5px solid black;
+      height: 50px;
+      position: fixed;
+      bottom: 20px;
+      width: 50px;
+      -webkit-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+      -webkit-transition-property: opacity, right;
+      transition-property: opacity, right;
+      cursor: pointer;
+      opacity: 0;
+      right: -75px;
+    }
+
+    .ScrollUpButton__Toggled{
+      opacity: 1;
+      right: 20px;
+    }
+```
+
+
+
 
 ###More To Come Soon!!
 
