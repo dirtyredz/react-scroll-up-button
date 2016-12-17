@@ -40,7 +40,7 @@ export default class Index extends React.Component {
 ###Custom Button:
 ```jsx
 import React from "react";
-import ScrollUp from "react-scroll-up-button";
+import ScrollUpButton from "react-scroll-up-button";
 
 export default class Index extends React.Component {
     render() {
