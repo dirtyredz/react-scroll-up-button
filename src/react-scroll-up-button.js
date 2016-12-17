@@ -1,24 +1,25 @@
 import React from "react";
 import TweenFunctions from "tween-functions";
 
-import styles from './react-scroll-up-button.css';
-
 export default class ScrollUpButton extends React.Component {
     constructor(props){
         super(props)
         this.state={ToggleScrollUp: ''};
         this.Animation = {StartPosition: 0, CurrentAnimationTime: 0, StartTime:null,AnimationFrame:null}
+
+
     }
 
     HandleScroll() {
         //window.pageYOffset = current scroll position
         //TransitionBtnPosition = position at which we want the button to show.
         if (window.pageYOffset > this.props.TransitionBtnPosition) {
+
             //styles.Toggled = the class name we want applied to transition the button in.
             if(this.props.children){
               this.setState({ToggleScrollUp: this.props.TransitionClassName});
             }else{
-              this.setState({ToggleScrollUp: styles.Toggled});
+              this.setState({ToggleScrollUp: true});
             }
 
         } else {
@@ -83,6 +84,38 @@ export default class ScrollUpButton extends React.Component {
         window.removeEventListener("touchstart", this.StopScrollingFrame.bind(this), false);
     }
     render() {
+
+      var styles={
+        MainStyle: {
+          backgroundColor: 'rgba(50, 50, 50, 0.5)',
+          height: 50,
+          position: 'fixed',
+          bottom: 20,
+          width: 50,
+          WebkitTransition: 'all 0.5s ease-in-out',
+          transition: 'all 0.5s ease-in-out',
+          transitionProperty: 'opacity, right',
+          cursor: 'pointer',
+          opacity: 0,
+          right: -50,
+        },
+        SvgStyle: {
+          display: 'inline-block',
+          width: '100%',
+          height: '100%',
+          strokeWidth: 0,
+          stroke: 'white',
+          fill: 'white',
+          paddingLeft: 10,
+        },
+        ToggledStyle: {
+          opacity: 1,
+          right: 20,
+        }
+      }
+
+
+
       if(this.props.children){
         const childrenWithProps = React.Children.map(this.props.children,
          (child) => React.cloneElement(child, {
@@ -96,8 +129,8 @@ export default class ScrollUpButton extends React.Component {
         );
       }else{
         return(
-          <aside class={styles.ScrollUp + " " + this.state.ToggleScrollUp} onClick={this.HandleClick.bind(this)}>
-              <svg class={styles.SVG} viewBox="0 0 32 32" >
+          <aside style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick.bind(this)}>
+              <svg style={styles.SvgStyle} viewBox="0 0 32 32" >
                   <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
               </svg>
           </aside>

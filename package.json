@@ -1,11 +1,11 @@
 {
   "name": "react-scroll-up-button",
-  "version": "1.4.9",
+  "version": "1.5.1",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
     "compile": "babel --presets react,es2015,stage-0 --plugins react-html-attrs,transform-decorators-legacy,transform-class-properties -d lib/ src/",
-    "css":   "copyfiles react-scroll-up-button.css lib/",
-    "prepublish": "npm run compile && npm run css"
+    "css": "copyfiles react-scroll-up-button.css lib/",
+    "prepublish": "npm run compile"
   },
   "main": "lib/react-scroll-up-button.js",
   "author": "Dirtyredz | David McCLain <david.mcclain@dirtyredz.com>",
@@ -24,7 +24,6 @@
     "react-component"
   ],
   "devDependencies": {
-    "autoprefixer-loader": "^3.2.0",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.0",
@@ -36,16 +35,14 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babel-runtime": "^6.20.0",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^1.0.1",
     "react-dom": "^0.14.6",
-    "style-loader": "~0.12.3",
     "webpack": "~1.11.0"
   },
   "peerDependencies": {
-    "react": "~0.13.3"
+    "react": "^0.13.3"
   },
   "dependencies": {
+    "radium": "^0.18.1",
     "tween-functions": "^1.2.0"
   }
 }

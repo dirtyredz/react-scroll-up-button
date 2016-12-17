@@ -67,37 +67,43 @@ export default class Index extends React.Component {
 ###Configuration:
 ```javascript
     {
-        ContainerClassName: 'ScrollUpButton__Container', //Class name applied to the container when not using the default view
-        StopPosition: 0,//Scroll position to stop at, 0 = top of page
-        TransitionBtnPosition: 150,//at what scroll position value to show the button
-        EasingType: 'easeOutCubic',//Easing option see : (https://www.npmjs.com/package/tween-functions) for available options
-        AnimationDuration: 500,//MS duration of the scroll up event
-        TransitionClassName: 'ScrollUpButton__Toggled',//Class name applied to the container to show the button when not using the default view
+        //Scroll position to stop at, 0 = top of page
+        StopPosition: 0,
+        //at what scroll position value to show the button
+        TransitionBtnPosition: 150,
+        //Easing option see : (https://www.npmjs.com/package/tween-functions) for available options
+        EasingType: 'easeOutCubic',
+        //MS duration of the scroll up event
+        AnimationDuration: 500,
+        //Class name applied to the container when NOT using the default view
+        ContainerClassName: 'ScrollUpButton__Container',
+        //Class name applied to the container to show the button when NOT using the default view
+        TransitionClassName: 'ScrollUpButton__Toggled',
     }
 ```
 ###Themed Buttons:
 Click on a button to see its code.
 
 Vertical Button | Circle Arrow Button
-:---: | :---: 
-[![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button) 
-           
+:---: | :---:
+[![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button)
 
 
+----
 
 
-<h1>__________________________________________________________________</h1>
 ####Vertical Button:
 ![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 
-Vertical_Button | Using Css-Modules:
+Vertical_Button | React:
 ```
+    //Using css-modules
     <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
       <span class={styles.BTN}>UP &#8594;</span>
     </ScrollUpButton>
-```
-Vertical_Button | Without Css-Modules:
-```
+    //
+    //or
+    //No css loader/compiler
     <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
       <span class="BTN">UP &#8594;</span>
     </ScrollUpButton>
@@ -127,19 +133,21 @@ Vertical_Button | CSS:
       right: 10px;
     }
 ```
-<h1>__________________________________________________________________</h1>
+
+----
 
 ####Circle Arrow Button:
 ![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
 
-Circle_Arrow_Button | Using Css-Modules:
+Circle_Arrow_Button | React:
 ```
+    //Using css-modules
     <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
       <span class={styles.BTN}>UP &#8594;</span>
     </ScrollUpButton>
-```
-Circle_Arrow_Button | Without Css-Modules:
-```
+    //
+    //or
+    //No css loader/compiler
     <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
       <span class="BTN">UP &#8594;</span>
     </ScrollUpButton>
@@ -172,10 +180,9 @@ Circle_Arrow_Button | CSS:
     }
 ```
 
-
-
-
 ###More To Come Soon!!
+
+----
 
 ###Credit
 I was inspired by: https://github.com/milosjanda/react-scroll-up
