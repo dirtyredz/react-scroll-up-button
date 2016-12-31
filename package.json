@@ -1,6 +1,6 @@
 {
   "name": "react-scroll-up-button",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
     "compile": "babel --presets react,es2015,stage-0 --plugins react-html-attrs,transform-decorators-legacy,transform-class-properties -d lib/ src/",
@@ -35,11 +35,12 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babel-runtime": "^6.20.0",
-    "react-dom": "^0.14.6",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1webpack",
     "webpack": "~1.11.0"
   },
   "peerDependencies": {
-    "react": "^0.13.3"
+    "react": "^15.4.1"
   },
   "dependencies": {
     "tween-functions": "^1.2.0"
