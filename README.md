@@ -1,9 +1,13 @@
-[![npm version](https://badge.fury.io/js/react-scroll-up-button.svg)](https://badge.fury.io/js/react-scroll-up-button)[![npm](https://img.shields.io/npm/l/express.svg)]()
+[![npm version](https://badge.fury.io/js/react-scroll-up-button.svg)](https://badge.fury.io/js/react-scroll-up-button)
+[![npm](https://img.shields.io/npm/l/express.svg)]()
+[![npm](https://img.shields.io/badge/Demo-Live-green.svg)](http://dirtyredz.com/Projects/ReactScrollUpButton)
 
 # react-scroll-up-button
 React Component for a fixed scroll to top button.
 The button can use the default button, or can be customized to look like any button you want.
 The component contains all the code neccassary to scroll to the top of the page (Or desired position) Utilizing Easing effects.
+
+
 
 I am also adding many different style buttons that you can copy and paste into this component to quickly acheive a style you can appreciate and fits your websites look and feel.
 
