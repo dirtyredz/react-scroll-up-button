@@ -28,7 +28,8 @@ export default class Index extends React.Component {
     render() {
         return (
             <div>
-                <ScrollUpButton /> //Add this where ever you would like.
+                <ScrollUpButton />
+                //This is all you need to get the default view working
             </div>
         );
     }
@@ -47,16 +48,9 @@ export default class Index extends React.Component {
     render() {
         return (
             <div>
-                <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName: 'ScrollUpButton__Toggled'>
-                    //Any JSX
-                    //
-                    //<span class="MyCustomButtonClass">UP</span>
-                    //
-                    //or
-                    //
-                    //<svg class="MyCustomButtonClass" viewBox="0 0 32 32" >
-                    //  <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
-                    //</svg>
+                <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
+                    // Here you can add any react component or jsx
+                    //ScrollButton will apply the classnames given to the container of whatever you put here.
                 </ScrollUpButton>
             </div>
         );
@@ -98,13 +92,6 @@ Vertical Button | Circle Arrow Button
 
 Vertical_Button | React:
 ```
-    //Using css-modules
-    <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
-      <span class={styles.BTN}>UP &#8594;</span>
-    </ScrollUpButton>
-    //
-    //or
-    //No css loader/compiler
     <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
       <span class="BTN">UP &#8594;</span>
     </ScrollUpButton>
@@ -128,7 +115,6 @@ Vertical_Button | CSS:
       right: -75px;
       transform: rotate(-90deg);
     }
-
     .ScrollUpButton__Toggled{
       opacity: 1;
       right: 10px;
@@ -142,22 +128,14 @@ Vertical_Button | CSS:
 
 Circle_Arrow_Button | React:
 ```
-    //Using css-modules
-    <ScrollUpButton ContainerClassName={styles.ScrollUpButton__Container} TransitionClassName={styles.ScrollUpButton__Toggled}>
-      <span class={styles.BTN}>UP &#8594;</span>
-    </ScrollUpButton>
-    //
-    //or
-    //No css loader/compiler
     <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
-      <span class="BTN">UP &#8594;</span>
+      <svg viewBox="0 0 32 32" >
+        <path class="path1" d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path>
+      </svg>
     </ScrollUpButton>
 ```
 Circle_Arrow_Button | CSS:
 ```
-    .BTN{
-      padding-left: 1px;
-    }
     .ScrollUpButton__Container{
       background-color: rgb(255, 255, 255);
       border-radius: 50%;
