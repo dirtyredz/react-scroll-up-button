@@ -1,3 +1,8 @@
+#1.5.4
+
+* **NPM:** Published 1.5.4
+* **GITHUB:** Updated README.md fixed arrow up example
+
 #1.5.2
 
 * **NPM:** Removed un-needed dependency
