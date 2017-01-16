@@ -12,10 +12,10 @@ Object.keys(document.defaultView).forEach((property) => {
 global.navigator = {
   userAgent: 'node.js'
 };
+
 require('raf').polyfill()
 import React from 'react';
 import { mount } from 'enzyme';
-import RATU from 'react-addons-test-utils';
 import sinon from 'sinon';
 import ScrollUpButton from '../react-scroll-up-button';
 import { expect } from 'chai';
@@ -100,7 +100,7 @@ describe('Testing <ScrollUpButton/> current state:', ()=>{
 
 //Testing group
 describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
-
+  let sandbox;
   let wrapper;
   let scrollTo_Stub;
   // before each it test.
@@ -108,9 +108,9 @@ describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
   beforeEach(()=>{
     window.pageYOffset = 0
     wrapper = mount(<ScrollUpButton />);
-    //replaceRaf();//<--Replace all the AnimationFrame methods with node compatabile methods
     //Settup stub and replace scrollTo function with ours.
-    scrollTo_Stub = sinon.stub(window, 'scrollTo', (x, y)=>{
+    sandbox = sinon.sandbox.create();
+    sandbox.stub(window, 'scrollTo', (x, y)=>{
       window.pageXOffset = x;
       window.pageYOffset = y;
       wrapper.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
@@ -118,20 +118,20 @@ describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
   });
 
   afterEach(()=>{
-    scrollTo_Stub.restore()// <-- return scrollTo back to its original function
+    sandbox.restore()// <-- return scrollTo back to its original function
   })
 
   //it test a single requirment inside the test group
   //did it scroll the page up
   it('did scroll the page to 0', (done) => {
-    expect(wrapper.state().ToggleScrollUp).to.equal('');
 
+    expect(wrapper.state().ToggleScrollUp).to.equal('');
     window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
     wrapper.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
     wrapper.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
 
     setTimeout(()=>{
-      expect(scrollTo_Stub.lastCall.args[1]).to.within(-1,1);
+      expect(sandbox.fakes[0].lastCall.args[1]).to.within(-1,1);
       expect(wrapper.state().ToggleScrollUp).to.equal('');
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
     }, 500);
@@ -147,7 +147,7 @@ describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
     wrapper.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
 
     setTimeout(()=>{
-      expect(scrollTo_Stub.lastCall.args[1]).to.within(-1,1);
+      expect(sandbox.fakes[0].lastCall.args[1]).to.within(-1,1);
       expect(wrapper.state().ToggleScrollUp).to.equal('');
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
     }, 500);
