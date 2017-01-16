@@ -6,14 +6,13 @@ export default class ScrollUpButton extends React.Component {
         super(props)
         this.state={ToggleScrollUp: ''};
         this.Animation = {StartPosition: 0, CurrentAnimationTime: 0, StartTime:null,AnimationFrame:null}
-
-
     }
+
 
     HandleScroll() {
         //window.pageYOffset = current scroll position
-        //TransitionBtnPosition = position at which we want the button to show.
-        if (window.pageYOffset > this.props.TransitionBtnPosition) {
+        //ShowAtPostion = position at which we want the button to show.
+        if (window.pageYOffset > this.props.ShowAtPostion) {
 
             //styles.Toggled = the class name we want applied to transition the button in.
             if(this.props.children){
@@ -21,7 +20,6 @@ export default class ScrollUpButton extends React.Component {
             }else{
               this.setState({ToggleScrollUp: true});
             }
-
         } else {
             //remove the class name
             this.setState({ToggleScrollUp: ''});
@@ -37,8 +35,8 @@ export default class ScrollUpButton extends React.Component {
         this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame.bind(this));
     }
 
-    ScrollingFrame(timestamp) {
-        //Retrieve timestamp from window.requestAnimationFrame
+    ScrollingFrame() {
+        let timestamp = Math.floor(Date.now());
         //If StartTime has not been assigned a value, assign it the start timestamp.
         if (!this.Animation.StartTime) {
             this.Animation.StartTime = timestamp;
@@ -46,8 +44,6 @@ export default class ScrollUpButton extends React.Component {
 
         //set CurrentAnimationTime every iteration of ScrollingFrame()
         this.Animation.CurrentAnimationTime = timestamp - this.Animation.StartTime;
-
-
         //if we hit the StopPosition, StopScrollingFrame()
         if (window.pageYOffset <= this.props.StopPosition) {
             this.StopScrollingFrame();
@@ -55,12 +51,13 @@ export default class ScrollUpButton extends React.Component {
             //Otherwise continue ScrollingFrame to the StopPosition.
             //Does not support horizontal ScrollingFrame.
             //Let TweenFunctions handle the math to give us a new position based on AnimationDuration and EasingType type
-            window.scrollTo(0, TweenFunctions[this.props.EasingType](
+            let YPos = TweenFunctions[this.props.EasingType](
                 this.Animation.CurrentAnimationTime,
                 this.Animation.StartPosition,
                 this.props.StopPosition,
                 this.props.AnimationDuration
-            ));
+            );
+            window.scrollTo(0, YPos);
             //Request another frame to be painted
             this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame.bind(this));
         }
@@ -119,7 +116,7 @@ export default class ScrollUpButton extends React.Component {
       if(this.props.children){
         const childrenWithProps = React.Children.map(this.props.children,
          (child) => React.cloneElement(child, {
-           class: this.className
+           className: this.className
          })
         );
         return(
@@ -138,9 +135,17 @@ export default class ScrollUpButton extends React.Component {
       }
     }
 }
+ScrollUpButton.defaultProps  = {
+    ContainerClassName: 'ScrollUpButton__Container',
+    StopPosition: 0,
+    ShowAtPostion: 150,
+    EasingType: 'easeOutCubic',
+    AnimationDuration: 500,
+    TransitionClassName: 'ScrollUpButton__Toggled',
+}
 ScrollUpButton.propTypes ={
   StopPosition: React.PropTypes.number,
-  TransitionBtnPosition: React.PropTypes.number.isRequired, // show button under this position,
+  ShowAtPostion: React.PropTypes.number.isRequired, // show button under this position,
   EasingType: React.PropTypes.oneOf(['linear', 'easeInQuad', 'easeOutQuad', 'easeInOutQuad', 'easeInCubic',
       'easeOutCubic', 'easeInOutCubic', 'easeInQuart', 'easeOutQuart', 'easeInOutQuart', 'easeInQuint',
       'easeOutQuint', 'easeInOutQuint', 'easeInSine', 'easeOutSine', 'easeInOutSine', 'easeInExpo', 'easeOutExpo',
@@ -148,12 +153,4 @@ ScrollUpButton.propTypes ={
       'easeInOutElastic', 'easeInBack', 'easeOutBack', 'easeInOutBack', 'easeInBounce', 'easeOutBounce',
       'easeInOutBounce']),
   AnimationDuration: React.PropTypes.number // seconds
-}
-ScrollUpButton.defaultProps  = {
-    ContainerClassName: 'ScrollUpButton__Container',
-    StopPosition: 0,
-    TransitionBtnPosition: 150,
-    EasingType: 'easeOutCubic',
-    AnimationDuration: 500,
-    TransitionClassName: 'ScrollUpButton__Toggled',
 }

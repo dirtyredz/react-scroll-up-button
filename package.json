@@ -1,11 +1,12 @@
 {
   "name": "react-scroll-up-button",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
-    "dev": "webpack-dev-server --config ./UnitTesting/webpack.config.js --content-base ./UnitTesting/ --inline --hot",
+    "dev": "webpack-dev-server --config ./UITesting/webpack.config.js",
     "compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "test": "mocha -R spec --compilers js:babel-core/register src/test/test.js"
   },
   "main": "lib/react-scroll-up-button.js",
   "author": "Dirtyredz | David McCLain <david.mcclain@dirtyredz.com>",
@@ -13,6 +14,18 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dirtyredz/react-scroll-up-button.git"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "react-html-attrs",
+      "transform-decorators-legacy",
+      "transform-class-properties"
+    ]
   },
   "keywords": [
     "scroll",
@@ -35,8 +48,16 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babel-runtime": "^6.20.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.0",
+    "jsdom": "^9.9.1",
+    "mocha": "^3.2.0",
+    "raf": "^3.3.0",
+    "raf-stub": "^2.0.0",
     "react": "^15.4.1",
+    "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.1",
+    "sinon": "^1.17.7",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   },
