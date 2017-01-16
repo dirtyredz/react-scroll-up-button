@@ -120,7 +120,9 @@ describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
   afterEach(()=>{
     sandbox.restore()// <-- return scrollTo back to its original function
   })
-
+  after(()=>{
+    sandbox.restore()// <-- return scrollTo back to its original function
+  })
   //it test a single requirment inside the test group
   //did it scroll the page up
   it('did scroll the page to 0', (done) => {
