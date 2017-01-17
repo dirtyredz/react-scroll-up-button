@@ -29,7 +29,7 @@ describe('Testing <ScrollUpButton/> Action scroll to props assigned top:', ()=>{
     window.pageYOffset = 0
     let wrapper = mount(<ScrollUpButton StopPosition={50}/>);
     //Settup stub and replace scrollTo function with ours.
-    console.log(scrollTo_Stub);
+
     let scrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
       window.pageXOffset = x;
       window.pageYOffset = y;
@@ -44,7 +44,8 @@ describe('Testing <ScrollUpButton/> Action scroll to props assigned top:', ()=>{
       expect(scrollTo_Stub.lastCall.args[1]).to.within(40,60);
       expect(wrapper.state().ToggleScrollUp).to.equal('');
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
-      scrollTo_Stub.restore()
+      scrollTo_Stub.restore();
+      window.scrollTo.restore();
     }, 500);
   });
 });
@@ -146,7 +147,8 @@ describe('Testing <ScrollUpButton/> Action scroll to default top:', ()=>{
       expect(scrollTo_Stub.lastCall.args[1]).to.within(-10,10);
       expect(wrapper.state().ToggleScrollUp).to.equal('');
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
-      scrollTo_Stub.restore()
+      scrollTo_Stub.restore();
+      window.scrollTo.restore();
     }, 500);
   });
 });
