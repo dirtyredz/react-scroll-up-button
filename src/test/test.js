@@ -29,6 +29,7 @@ describe('Testing <ScrollUpButton/> Action scroll to props assigned top:', ()=>{
     window.pageYOffset = 0
     let wrapper = mount(<ScrollUpButton StopPosition={50}/>);
     //Settup stub and replace scrollTo function with ours.
+    console.log(scrollTo_Stub);
     let scrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
       window.pageXOffset = x;
       window.pageYOffset = y;
