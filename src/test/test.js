@@ -22,25 +22,25 @@ import { expect } from 'chai';
 
 
 //Testing group
-describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
+describe('Testing <ScrollUpButton/> Action scroll to props assigned top:', ()=>{
   //it test a single requirment inside the test group
   //did it scroll the page up
   it('did scroll the page to 50', (done) => {
     window.pageYOffset = 0
     let wrapper = mount(<ScrollUpButton StopPosition={50}/>);
     //Settup stub and replace scrollTo function with ours.
-    let scrollTo_Stub = sinon.stub(window, 'scrollTo', (x, y)=>{
+    let scrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
       window.pageXOffset = x;
       window.pageYOffset = y;
       wrapper.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
-    })
+    });
     expect(wrapper.state().ToggleScrollUp).to.equal('');
     window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
     wrapper.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
     wrapper.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
 
     setTimeout(()=>{
-      expect(scrollTo_Stub.lastCall.args[1]).to.within(49,51);
+      expect(scrollTo_Stub.lastCall.args[1]).to.within(40,60);
       expect(wrapper.state().ToggleScrollUp).to.equal('');
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
       scrollTo_Stub.restore()
@@ -124,25 +124,25 @@ describe('Testing <ScrollUpButton/> current state:', ()=>{
 });
 
 //Testing group
-describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
+describe('Testing <ScrollUpButton/> Action scroll to default top:', ()=>{
   //it test a single requirment inside the test group
   //did it scroll the page up
   it('did scroll the page to 0', (done) => {
     window.pageYOffset = 0
     let wrapper = mount(<ScrollUpButton />);
     //Settup stub and replace scrollTo function with ours.
-    let scrollTo_Stub = sinon.stub(window, 'scrollTo', (x, y)=>{
+    let scrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
       window.pageXOffset = x;
       window.pageYOffset = y;
       wrapper.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
-    })
+    });
     expect(wrapper.state().ToggleScrollUp).to.equal('');
     window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
     wrapper.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
     wrapper.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
 
     setTimeout(()=>{
-      expect(scrollTo_Stub.lastCall.args[1]).to.within(-1,1);
+      expect(scrollTo_Stub.lastCall.args[1]).to.within(-10,10);
       expect(wrapper.state().ToggleScrollUp).to.equal('');
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
       scrollTo_Stub.restore()
