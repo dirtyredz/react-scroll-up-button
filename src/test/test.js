@@ -22,6 +22,33 @@ import { expect } from 'chai';
 
 
 //Testing group
+describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
+  //it test a single requirment inside the test group
+  //did it scroll the page up
+  it('did scroll the page to 50', (done) => {
+    window.pageYOffset = 0
+    let wrapper = mount(<ScrollUpButton StopPosition={50}/>);
+    //Settup stub and replace scrollTo function with ours.
+    let scrollTo_Stub = sinon.stub(window, 'scrollTo', (x, y)=>{
+      window.pageXOffset = x;
+      window.pageYOffset = y;
+      wrapper.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
+    })
+    expect(wrapper.state().ToggleScrollUp).to.equal('');
+    window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
+    wrapper.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
+    wrapper.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
+
+    setTimeout(()=>{
+      expect(scrollTo_Stub.lastCall.args[1]).to.within(49,51);
+      expect(wrapper.state().ToggleScrollUp).to.equal('');
+      done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
+      scrollTo_Stub.restore()
+    }, 500);
+  });
+});
+
+//Testing group
 describe('Testing <ScrollUpButton/> settup:', ()=>{
   //it test a single requirment inside the test group
   //WAS componentDidMount called
@@ -96,62 +123,29 @@ describe('Testing <ScrollUpButton/> current state:', ()=>{
   })
 });
 
-
-
 //Testing group
 describe('Testing <ScrollUpButton/> Action scroll to top:', ()=>{
-  let sandbox;
-  let wrapper;
-  let scrollTo_Stub;
-  // before each it test.
-  //make sure window is scrolled to the top and ScrollUpButton is mounted
-  beforeEach(()=>{
+  //it test a single requirment inside the test group
+  //did it scroll the page up
+  it('did scroll the page to 0', (done) => {
     window.pageYOffset = 0
-    wrapper = mount(<ScrollUpButton />);
+    let wrapper = mount(<ScrollUpButton />);
     //Settup stub and replace scrollTo function with ours.
-    sandbox = sinon.sandbox.create();
-    sandbox.stub(window, 'scrollTo', (x, y)=>{
+    let scrollTo_Stub = sinon.stub(window, 'scrollTo', (x, y)=>{
       window.pageXOffset = x;
       window.pageYOffset = y;
       wrapper.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
     })
-  });
-
-  afterEach(()=>{
-    sandbox.restore()// <-- return scrollTo back to its original function
-  })
-  after(()=>{
-    sandbox.restore()// <-- return scrollTo back to its original function
-  })
-  //it test a single requirment inside the test group
-  //did it scroll the page up
-  it('did scroll the page to 0', (done) => {
-
     expect(wrapper.state().ToggleScrollUp).to.equal('');
     window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
     wrapper.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
     wrapper.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
 
     setTimeout(()=>{
-      expect(sandbox.fakes[0].lastCall.args[1]).to.within(-1,1);
+      expect(scrollTo_Stub.lastCall.args[1]).to.within(-1,1);
       expect(wrapper.state().ToggleScrollUp).to.equal('');
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
-    }, 500);
-  });
-
-  //it test a single requirment inside the test group
-  //did it scroll the page up
-  it('did scroll the page to 50', (done) => {
-    expect(wrapper.state().ToggleScrollUp).to.equal('');
-    wrapper.setProps({ StopPosition: 50 });
-    window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
-    wrapper.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
-    wrapper.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
-
-    setTimeout(()=>{
-      expect(sandbox.fakes[0].lastCall.args[1]).to.within(-1,1);
-      expect(wrapper.state().ToggleScrollUp).to.equal('');
-      done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
+      scrollTo_Stub.restore()
     }, 500);
   });
 });
