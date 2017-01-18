@@ -2,6 +2,7 @@
 [![npm](https://img.shields.io/npm/l/express.svg)]()
 [![npm](https://img.shields.io/badge/Demo-Live-green.svg)](http://dirtyredz.com/Projects/ReactScrollUpButton)
 [![Build Status](https://travis-ci.org/dirtyredz/react-scroll-up-button.svg?branch=master)](https://travis-ci.org/dirtyredz/react-scroll-up-button)
+[![Coverage Status](https://coveralls.io/repos/github/dirtyredz/react-scroll-up-button/badge.svg?branch=master)](https://coveralls.io/github/dirtyredz/react-scroll-up-button?branch=master)
 
 # react-scroll-up-button
 React Component for a fixed scroll to top button.
