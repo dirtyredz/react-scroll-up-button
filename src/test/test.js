@@ -1,27 +1,10 @@
-
-import { jsdom } from 'jsdom';
-
-var exposedProperties = ['window', 'navigator', 'document'];
-
-global.document = jsdom('<!doctype html><html><body style="height:2000px"></body></html>');
-global.window = document.defaultView;
-Object.keys(document.defaultView).forEach((property) => {
-  if (typeof global[property] === 'undefined') {
-    global[property] = document.defaultView[property];
-  }
-});
-global.navigator = {
-  userAgent: 'node.js'
-};
-
-require('raf').polyfill()
+import 'jsdom-global/register';
+require('raf').polyfill();
 import React from 'react';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
-import TestUtils from 'react-addons-test-utils';
 import ScrollUpButton from '../react-scroll-up-button';
 import { expect } from 'chai';
-
 
 //Testing group
 describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
@@ -86,10 +69,14 @@ describe('Testing <ScrollUpButton/> settup:', ()=>{
   //it test a single requirment inside the test group
   //WAS componentDidMount called
   it('did call componentDidMount', () => {
-    sinon.spy(ScrollUpButton.prototype, 'componentDidMount');
+    let DidMount = sinon.spy(ScrollUpButton.prototype, 'componentDidMount');
+    let WillUnmount = sinon.spy(ScrollUpButton.prototype, 'componentWillUnmount');
     const wrapper = mount(<ScrollUpButton />);
-    expect(ScrollUpButton.prototype.componentDidMount.calledOnce).to.equal(true);
+    expect(DidMount.callCount).to.equal(1);
+    wrapper.unmount();
+    expect(WillUnmount.callCount).to.equal(1);
   });
+
 
   //it test a single requirment inside the test group
   //Check the ShowAtPostion default
