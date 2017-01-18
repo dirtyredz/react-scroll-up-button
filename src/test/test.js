@@ -30,7 +30,7 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
     window.pageYOffset = 0
     //Render component
     Component = mount(<ScrollUpButton StopPosition={50}/>);
-
+    const scrollTo = window.scrollTo;
     try {
       ////////////////////////////////
       // Fix for NodeJS 7.4, without this line the test worked on NodeJS 6.9
@@ -41,7 +41,7 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
       // Any advice would be much appeciated on explaining this behavior.
       // The only thing I can suspect is nodeJS for some reason does something to the window obj or jsdom is failing to invoce the proper function in NodeJS 7.4
       ////////////////////////////////
-      
+
       //Settup stub and replace scrollTo function with ours.
       ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
         window.pageXOffset = x;
@@ -50,6 +50,7 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
       });
     }
     catch (e) {
+      window.scrollTo = scrollTo;
       //Settup stub and replace scrollTo function with ours.
       ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
         window.pageXOffset = x;
