@@ -7,7 +7,7 @@
     "compile": "babel -d lib/ src/",
     "prepublish": "npm run compile",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha src/test/test.js -- -R spec --require babel-register",
-    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "main": "lib/react-scroll-up-button.js",
   "author": "Dirtyredz | David McCLain <david.mcclain@dirtyredz.com>",
