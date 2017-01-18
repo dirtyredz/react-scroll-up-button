@@ -30,7 +30,9 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
     window.pageYOffset = 0
     //Render component
     Component = mount(<ScrollUpButton StopPosition={50}/>);
-    const scrollTo = window.scrollTo;
+    const scrollTo = window.scrollTo; // <-- store window.scrollTo incase were running on nodeJS 6.9 and lower
+
+    // try catch for NodeJS compatability
     try {
       ////////////////////////////////
       // Fix for NodeJS 7.4, without this line the test worked on NodeJS 6.9
@@ -50,7 +52,7 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
       });
     }
     catch (e) {
-      window.scrollTo = scrollTo;
+      window.scrollTo = scrollTo; // <-- restore the window.scrollTo prior to setting it to null for NodeJS compatibility
       //Settup stub and replace scrollTo function with ours.
       ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
         window.pageXOffset = x;
