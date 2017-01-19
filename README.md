@@ -67,20 +67,21 @@ export default class Index extends React.Component {
 
 ###Configuration:
 ```javascript
-    {
-        //Scroll position to stop at, 0 = top of page
-        StopPosition: 0,
-        //at what scroll position value to show the button
-        TransitionBtnPosition: 150,
-        //Easing option see : (https://www.npmjs.com/package/tween-functions) for available options
-        EasingType: 'easeOutCubic',
-        //MS duration of the scroll up event
-        AnimationDuration: 500,
-        //Class name applied to the container when NOT using the default view
-        ContainerClassName: 'ScrollUpButton__Container',
-        //Class name applied to the container to show the button when NOT using the default view
-        TransitionClassName: 'ScrollUpButton__Toggled',
-    }
+    <ScrollUpButton
+      StopPosition={0} 
+      TransitionBtnPosition={150} 
+      EasingType='easeOutCubic' 
+      AnimationDuration={500} 
+      ContainerClassName='ScrollUpButton__Container'
+      TransitionClassName='ScrollUpButton__Toggled'
+    />
+    
+    StopPosition -- PageYOffset in which you want the page to stop at when scrolling up.
+    TransitionBtnPosition -- PageYOffset position at which the button will show up.
+    EasingType -- Easing option see : (https://www.npmjs.com/package/tween-functions) for available options.
+    AnimationDuration -- Milisecond duration of scrolling up.
+    ContainerClassName -- Class name applied to the container when NOT using the default view.
+    TransitionClassName -- Class name applied to the container to show the button when NOT using the default view.
 ```
 ###Themed Buttons:
 Click on a button to see its code.
