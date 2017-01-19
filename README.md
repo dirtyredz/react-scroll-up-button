@@ -75,14 +75,15 @@ export default class Index extends React.Component {
       ContainerClassName='ScrollUpButton__Container'
       TransitionClassName='ScrollUpButton__Toggled'
     />
-    
-    StopPosition -- PageYOffset in which you want the page to stop at when scrolling up.
-    TransitionBtnPosition -- PageYOffset position at which the button will show up.
-    EasingType -- Easing option see : (https://www.npmjs.com/package/tween-functions) for available options.
-    AnimationDuration -- Milisecond duration of scrolling up.
-    ContainerClassName -- Class name applied to the container when NOT using the default view.
-    TransitionClassName -- Class name applied to the container to show the button when NOT using the default view.
 ```
+StopPosition -- PageYOffset in which you want the page to stop at when scrolling up.
+TransitionBtnPosition -- PageYOffset position at which the button will show up.
+EasingType -- Easing option see : (https://www.npmjs.com/package/tween-functions) for available options.
+AnimationDuration -- Milisecond duration of scrolling up.
+ContainerClassName -- Class name applied to the container when NOT using the default view.
+TransitionClassName -- Class name applied to the container to show the button when NOT using the default view.
+    
+    
 ###Themed Buttons:
 Click on a button to see its code.
 
