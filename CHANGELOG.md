@@ -1,3 +1,13 @@
+#1.5.6
+
+* **NPM:** Updated README
+* **GITHUB:** Added build coverage
+
+#1.5.5
+
+* **NPM:** Update README, minor variable scoping.
+* **GITHUB:** Added build testing
+
 #1.5.4
 
 * **NPM:** Published 1.5.4

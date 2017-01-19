@@ -1,6 +1,6 @@
 {
   "name": "react-scroll-up-button",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
     "dev": "webpack-dev-server --config ./UITesting/webpack.config.js",
