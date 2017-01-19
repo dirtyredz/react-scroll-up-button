@@ -87,10 +87,9 @@ AnimationDuration -- Milisecond duration of scrolling up.
 ContainerClassName -- Class name applied to the container when NOT using the default view.
 
 TransitionClassName -- Class name applied to the container to show the button when NOT using the default view.
-    
-    
-    
-    
+
+----
+
 ###Themed Buttons:
 Click on a button to see its code.
 
