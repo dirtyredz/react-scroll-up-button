@@ -127,7 +127,7 @@ export default class ScrollUpButton extends React.Component {
       }else{
         return(
           <aside style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick.bind(this)}>
-              <svg style={styles.SvgStyle} viewBox="0 0 32 32" >
+              <svg viewBox="0 0 32 32" version="1.1" xmlnsSvg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" preserveAspectRatio="xMinYMin none" style={styles.SvgStyle}>
                   <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
               </svg>
           </aside>
