@@ -13,36 +13,12 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
     window.pageYOffset = 0
     //Render component
     Component = mount(<ScrollUpButton StopPosition={50}/>);
-    const scrollTo = window.scrollTo; // <-- store window.scrollTo incase were running on nodeJS 6.9 and lower
-
-    // try catch for NodeJS compatability
-    try {
-      ////////////////////////////////
-      // Fix for NodeJS 7.4, without this line the test worked on NodeJS 6.9
-      // without window.scrollTo I would get the TypeError message below
-      // TypeError: Attempted to wrap scrollTo which is already stubbed
-      window.scrollTo = null;
-      // I only need to assign this value here once, even though I stub window.scrollTo at the bottom of the page
-      // Any advice would be much appeciated on explaining this behavior.
-      // The only thing I can suspect is nodeJS for some reason does something to the window obj or jsdom is failing to invoce the proper function in NodeJS 7.4
-      ////////////////////////////////
-
-      //Settup stub and replace scrollTo function with ours.
-      ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
-        window.pageXOffset = x;
-        window.pageYOffset = y;
-        Component.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
-      });
-    }
-    catch (e) {
-      window.scrollTo = scrollTo; // <-- restore the window.scrollTo prior to setting it to null for NodeJS compatibility
-      //Settup stub and replace scrollTo function with ours.
-      ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
-        window.pageXOffset = x;
-        window.pageYOffset = y;
-        Component.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
-      });
-    }
+    
+    ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
+      window.pageXOffset = x;
+      window.pageYOffset = y;
+      Component.instance().HandleScroll(); // <-- call HandleScroll so the test can simulate the button being toggled
+    });
 
   })
   after(()=>{
