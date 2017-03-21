@@ -6,6 +6,10 @@ export default class ScrollUpButton extends React.Component {
         super(props)
         this.state={ToggleScrollUp: ''};
         this.Animation = {StartPosition: 0, CurrentAnimationTime: 0, StartTime:null,AnimationFrame:null}
+        this.HandleScroll = this.HandleScroll.bind(this)
+        this.StopScrollingFrame = this.StopScrollingFrame.bind(this)
+        this.ScrollingFrame = this.ScrollingFrame.bind(this)
+        this.HandleClick = this.HandleClick.bind(this)
     }
 
 
@@ -32,7 +36,7 @@ export default class ScrollUpButton extends React.Component {
         this.Animation.CurrentAnimationTime = 0;
         this.Animation.StartTime = null;
         //Start the scrolling animation.
-        this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame.bind(this));
+        this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame);
     }
 
     ScrollingFrame() {
@@ -59,7 +63,7 @@ export default class ScrollUpButton extends React.Component {
             );
             window.scrollTo(0, YPos);
             //Request another frame to be painted
-            this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame.bind(this));
+            this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame);
         }
     }
 
@@ -69,16 +73,16 @@ export default class ScrollUpButton extends React.Component {
     }
     componentDidMount() {
         this.HandleScroll(); // run HandleScroll() at mount incase we are already scrolled down
-        window.addEventListener('scroll', this.HandleScroll.bind(this));
-        window.addEventListener("wheel", this.StopScrollingFrame.bind(this), false);//Stop animation if user mouse wheels during animation.
-        window.addEventListener("touchstart", this.StopScrollingFrame.bind(this), false);//Stop animation if user touches the screen during animation.
+        window.addEventListener('scroll', this.HandleScroll);
+        window.addEventListener("wheel", this.StopScrollingFrame, false);//Stop animation if user mouse wheels during animation.
+        window.addEventListener("touchstart", this.StopScrollingFrame, false);//Stop animation if user touches the screen during animation.
     }
 
     componentWillUnmount() {
         //Remove all events, since component is no longer mounted.
-        window.removeEventListener('scroll', this.HandleScroll.bind(this));
-        window.removeEventListener("wheel", this.StopScrollingFrame.bind(this), false);
-        window.removeEventListener("touchstart", this.StopScrollingFrame.bind(this), false);
+        window.removeEventListener('scroll', this.HandleScroll);
+        window.removeEventListener("wheel", this.StopScrollingFrame, false);
+        window.removeEventListener("touchstart", this.StopScrollingFrame, false);
     }
     render() {
 
@@ -120,13 +124,13 @@ export default class ScrollUpButton extends React.Component {
          })
         );
         return(
-          <aside class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick.bind(this)}>
+          <aside class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick}>
             {childrenWithProps}
           </aside>
         );
       }else{
         return(
-          <aside style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick.bind(this)}>
+          <aside style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick}>
               <svg viewBox="0 0 32 32" version="1.1" xmlnsSvg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" preserveAspectRatio="xMinYMin none" style={styles.SvgStyle}>
                   <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
               </svg>
