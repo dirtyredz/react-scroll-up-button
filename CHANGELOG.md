@@ -1,3 +1,11 @@
+#1.5.9
+
+* **React:** Added Passive Events into listeners.
+* **React:** Replaced React.PropTypes with Proptypes See https://facebook.github.io/react/docs/typechecking-with-proptypes.html
+* **NPM:** Updated dependencies
+* **NPM:** Added detect-passive-events
+* **NPM:** Added prop-types
+
 #1.5.6
 
 * **NPM:** Updated README
