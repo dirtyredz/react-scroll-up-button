@@ -1,5 +1,7 @@
 import React from "react";
 import TweenFunctions from "tween-functions";
+import PropTypes from 'prop-types';
+import detectPassiveEvents from 'detect-passive-events';
 
 export default class ScrollUpButton extends React.Component {
     constructor(props){
@@ -74,8 +76,8 @@ export default class ScrollUpButton extends React.Component {
     componentDidMount() {
         this.HandleScroll(); // run HandleScroll() at mount incase we are already scrolled down
         window.addEventListener('scroll', this.HandleScroll);
-        window.addEventListener("wheel", this.StopScrollingFrame, false);//Stop animation if user mouse wheels during animation.
-        window.addEventListener("touchstart", this.StopScrollingFrame, false);//Stop animation if user touches the screen during animation.
+        window.addEventListener("wheel", this.StopScrollingFrame, detectPassiveEvents.hasSupport ? { passive : true } : false);//Stop animation if user mouse wheels during animation.
+        window.addEventListener("touchstart", this.StopScrollingFrame, detectPassiveEvents.hasSupport ? { passive : true } : false);//Stop animation if user touches the screen during animation.
     }
 
     componentWillUnmount() {
@@ -131,7 +133,7 @@ export default class ScrollUpButton extends React.Component {
       }else{
         return(
           <aside style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick}>
-              <svg viewBox="0 0 32 32" version="1.1" xmlnsSvg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" preserveAspectRatio="xMinYMin none" style={styles.SvgStyle}>
+              <svg viewBox="0 0 32 32" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" style={styles.SvgStyle}>
                   <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
               </svg>
           </aside>
@@ -148,13 +150,13 @@ ScrollUpButton.defaultProps  = {
     TransitionClassName: 'ScrollUpButton__Toggled',
 }
 ScrollUpButton.propTypes ={
-  StopPosition: React.PropTypes.number,
-  ShowAtPostion: React.PropTypes.number.isRequired, // show button under this position,
-  EasingType: React.PropTypes.oneOf(['linear', 'easeInQuad', 'easeOutQuad', 'easeInOutQuad', 'easeInCubic',
+  StopPosition: PropTypes.number,
+  ShowAtPostion: PropTypes.number.isRequired, // show button under this position,
+  EasingType: PropTypes.oneOf(['linear', 'easeInQuad', 'easeOutQuad', 'easeInOutQuad', 'easeInCubic',
       'easeOutCubic', 'easeInOutCubic', 'easeInQuart', 'easeOutQuart', 'easeInOutQuart', 'easeInQuint',
       'easeOutQuint', 'easeInOutQuint', 'easeInSine', 'easeOutSine', 'easeInOutSine', 'easeInExpo', 'easeOutExpo',
       'easeInOutExpo', 'easeInCirc', 'easeOutCirc', 'easeInOutCirc', 'easeInElastic', 'easeOutElastic',
       'easeInOutElastic', 'easeInBack', 'easeOutBack', 'easeInOutBack', 'easeInBounce', 'easeOutBounce',
       'easeInOutBounce']),
-  AnimationDuration: React.PropTypes.number // seconds
+  AnimationDuration: PropTypes.number // seconds
 }
