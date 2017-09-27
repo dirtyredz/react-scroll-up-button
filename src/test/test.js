@@ -1,3 +1,8 @@
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
 import 'jsdom-global/register';
 require('raf').polyfill();
 import React from 'react';
@@ -13,7 +18,7 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
     window.pageYOffset = 0
     //Render component
     Component = mount(<ScrollUpButton StopPosition={50}/>);
-    
+
     ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
       window.pageXOffset = x;
       window.pageYOffset = y;
