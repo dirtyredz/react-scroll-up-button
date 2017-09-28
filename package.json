@@ -55,7 +55,7 @@
     "chai": "^3.5.0",
     "coveralls": "^2.13.1",
     "enzyme": "^3.0.0",
-    "enzyme-adapter-react-16": "^16.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
