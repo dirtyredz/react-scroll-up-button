@@ -19,13 +19,8 @@ export default class ScrollUpButton extends React.Component {
         //window.pageYOffset = current scroll position
         //ShowAtPostion = position at which we want the button to show.
         if (window.pageYOffset > this.props.ShowAtPostion) {
-
             //styles.Toggled = the class name we want applied to transition the button in.
-            if(this.props.children){
-              this.setState({ToggleScrollUp: this.props.TransitionClassName});
-            }else{
-              this.setState({ToggleScrollUp: true});
-            }
+            this.setState({ToggleScrollUp: this.props.TransitionClassName});
         } else {
             //remove the class name
             this.setState({ToggleScrollUp: ''});
@@ -101,6 +96,7 @@ export default class ScrollUpButton extends React.Component {
           cursor: 'pointer',
           opacity: 0,
           right: -50,
+          zIndex: 1000,
         },
         SvgStyle: {
           display: 'inline-block',
@@ -132,7 +128,7 @@ export default class ScrollUpButton extends React.Component {
         );
       }else{
         return(
-          <aside style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick}>
+          <aside class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick}>
               <svg viewBox="0 0 32 32" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" style={styles.SvgStyle}>
                   <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
               </svg>

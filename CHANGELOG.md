@@ -1,6 +1,9 @@
+#1.5.11
+* **React:** Added className overrides to the default button.
+
 #1.5.10
 * **NPM:** Replaced babel-preset-es2015 for babel-preset-env
-* **NPM:** Updated Readt librarys
+* **NPM:** Updated React libraries
 * **NPM:** Added enzyme-adapter-react
 * **NPM:** Replaced react-addons-test-utils for react-test-renderer
 * **NPM:** Added Node 8 for unit testing

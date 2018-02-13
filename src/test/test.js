@@ -34,7 +34,7 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
     expect(Component.state().ToggleScrollUp).to.equal(''); // <-- Is the button hidden
     window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
     Component.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
-    expect(Component.state().ToggleScrollUp).to.equal(true); // <-- Is the button visible
+    expect(Component.state().ToggleScrollUp).to.equal('ScrollUpButton__Toggled'); // <-- Is the button visible
     Component.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
     //Well wait a little bit to let the simulation complete
     setTimeout(()=>{
@@ -101,12 +101,12 @@ describe('Testing <ScrollUpButton/> current state:', ()=>{
 
   //it test a single requirment inside the test group
   //Check the ToggleScrollUp state when scrolled down
-  it('ToggleScrollUp should be true when scrolled down', ()=>{
+  it('ToggleScrollUp should be ScrollUpButton__Toggled when scrolled down', ()=>{
     const wrapper = mount(<ScrollUpButton />);
     // Set the scroll position to 200 and trigger the event manually
     window.pageYOffset = 200
     wrapper.instance().HandleScroll();
-    expect(wrapper.state().ToggleScrollUp).to.equal(true);
+    expect(wrapper.state().ToggleScrollUp).to.equal('ScrollUpButton__Toggled');
   })
 
   //it test a single requirment inside the test group
@@ -147,7 +147,7 @@ describe('Testing <ScrollUpButton/> Action scroll to default top:', ()=>{
     expect(Component.state().ToggleScrollUp).to.equal(''); // <-- Is the button hidden
     window.pageYOffset = 300 // <-- scroll window down to prepare for smulation
     Component.instance().HandleScroll(); // <-- call handleScroll since we scrolled the window down.
-    expect(Component.state().ToggleScrollUp).to.equal(true); // <-- Is the button visible
+    expect(Component.state().ToggleScrollUp).to.equal('ScrollUpButton__Toggled'); // <-- Is the button visible
     Component.instance().HandleClick(); // <-- call HandleClick to start the scroll up simulation.
     //Well wait a little bit to let the simulation complete
     setTimeout(()=>{

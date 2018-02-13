@@ -43,6 +43,11 @@ export default class Index extends React.Component {
 
 ```
 
+Setting Custom Classes to the default button.
+This will apply the class names you specify to the default scroll-up-button.
+```jsx
+    <ScrollUpButton ContainerClassName="MyOverRideClass" TransitionClassName="MyOverRideTransitionedClass"/>
+```
 ----
 
 ###Custom Button:
@@ -68,10 +73,10 @@ export default class Index extends React.Component {
 ###Configuration:
 ```javascript
     <ScrollUpButton
-      StopPosition={0} 
-      TransitionBtnPosition={150} 
-      EasingType='easeOutCubic' 
-      AnimationDuration={500} 
+      StopPosition={0}
+      TransitionBtnPosition={150}
+      EasingType='easeOutCubic'
+      AnimationDuration={500}
       ContainerClassName='ScrollUpButton__Container'
       TransitionClassName='ScrollUpButton__Toggled'
     />
