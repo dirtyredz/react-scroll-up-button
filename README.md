@@ -24,7 +24,7 @@ npm install react-scroll-up-button
 
 ## Usage
 
-###Default Button:   ![default_button](https://cloud.githubusercontent.com/assets/7119499/21240547/5c47751a-c2d1-11e6-9df8-5be7bbdd53de.png)
+### Default Button:   ![default_button](https://cloud.githubusercontent.com/assets/7119499/21240547/5c47751a-c2d1-11e6-9df8-5be7bbdd53de.png)
 
 ```jsx
 import React from "react";
@@ -50,7 +50,7 @@ This will apply the class names you specify to the default scroll-up-button.
 ```
 ----
 
-###Custom Button:
+### Custom Button:
 ```jsx
 import React from "react";
 import ScrollUpButton from "react-scroll-up-button";
@@ -70,7 +70,7 @@ export default class Index extends React.Component {
 ```
 ----
 
-###Configuration:
+### Configuration:
 ```javascript
     <ScrollUpButton
       StopPosition={0}
@@ -95,7 +95,7 @@ TransitionClassName -- Class name applied to the container to show the button wh
 
 ----
 
-###Themed Buttons:
+### Themed Buttons:
 Click on a button to see its code.
 
 Vertical Button | Circle Arrow Button
@@ -106,7 +106,7 @@ Vertical Button | Circle Arrow Button
 ----
 
 
-####Vertical Button:
+#### Vertical Button:
 ![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)
 
 Vertical_Button | React:
@@ -142,7 +142,7 @@ Vertical_Button | CSS:
 
 ----
 
-####Circle Arrow Button:
+#### Circle Arrow Button:
 ![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
 
 Circle_Arrow_Button | React:
@@ -178,10 +178,10 @@ Circle_Arrow_Button | CSS:
     }
 ```
 
-###More To Come Soon!!
+### More To Come Soon!!
 
 ----
 
-###Credit
+### Credit
 I was inspired by: https://github.com/milosjanda/react-scroll-up
 With the base recource of the repo i was able to create my own in my style with additional functionality.
