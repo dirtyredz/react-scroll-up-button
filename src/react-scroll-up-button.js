@@ -105,7 +105,7 @@ export default class ScrollUpButton extends React.Component {
           strokeWidth: 0,
           stroke: 'white',
           fill: 'white',
-          paddingLeft: 13,
+          paddingLeft: 9,
         },
         ToggledStyle: {
           opacity: 1,
