@@ -98,8 +98,8 @@ TransitionClassName -- Class name applied to the container to show the button wh
 ### Themed Buttons:
 Click on a button to see its code.
 
-Vertical Button | Circle Arrow Button
-:---: | :---:
+Vertical Button | Circle Arrow Button | Tiny Up Button
+:---: | :---: | :---:
 [![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button) | [![tiny_up_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#tiny_up_button)
 
 
