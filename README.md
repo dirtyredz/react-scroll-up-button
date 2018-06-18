@@ -100,7 +100,7 @@ Click on a button to see its code.
 
 Vertical Button | Circle Arrow Button
 :---: | :---:
-[![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button)
+[![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button) | [![tiny_up_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#tiny_up_button)
 
 
 ----
@@ -134,6 +134,7 @@ Vertical_Button | CSS:
       right: -75px;
       transform: rotate(-90deg);
     }
+
     .ScrollUpButton__Toggled{
       opacity: 1;
       right: 10px;
@@ -178,7 +179,51 @@ Circle_Arrow_Button | CSS:
     }
 ```
 
-### More To Come Soon!!
+#### Tiny Up Button:
+![tiny_up_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
+
+Tiny_Up_Button | React:
+```
+    <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
+      <svg viewBox="0 0 28 28" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve">
+        <path d="M26.297 20.797l-2.594 2.578c-0.391 0.391-1.016 0.391-1.406 0l-8.297-8.297-8.297 8.297c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.578c-0.391-0.391-0.391-1.031 0-1.422l11.594-11.578c0.391-0.391 1.016-0.391 1.406 0l11.594 11.578c0.391 0.391 0.391 1.031 0 1.422z"></path>
+      </svg>
+    </ScrollUpButton>
+```
+Tiny_Up_Button | CSS:
+```
+  .ScrollUpButton__Container{
+    background-color: rgb(87, 86, 86);
+    height: 30px;
+    fill: #292929;
+    position: fixed;
+    bottom: 70px;
+    width: 30px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition-property: opacity, right;
+    transition-property: opacity, right;
+    cursor: pointer;
+    opacity: 0;
+    right: -75px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    transition: fill 0.5s linear;
+    -webkit-transition: fill 0.5s linear;
+  }
+
+  .ScrollUpButton__Container:hover{
+    fill: white;
+  }
+
+  .ScrollUpButton__Toggled{
+    opacity: 1;
+    right: 30px;
+  }
+```
+
+### More To Come!!
 
 ----
 
