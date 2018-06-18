@@ -100,7 +100,7 @@ Click on a button to see its code.
 
 Vertical Button | Circle Arrow Button | Tiny Up Button
 :---: | :---: | :---:
-[![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button) | [![tiny_up_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#tiny_up_button)
+[![vertical_button](https://cloud.githubusercontent.com/assets/7119499/21249476/ea4a02ce-c303-11e6-9448-6f2b078bc8d1.png)](#vertical-button)  | [![circle_arrow_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)](#circle-arrow-button) | [![tiny_up_button](https://user-images.githubusercontent.com/7119499/41563627-cb572f90-7315-11e8-8ae4-fae10b3642c3.PNG)](#tiny_up_button)
 
 
 ----
@@ -180,7 +180,7 @@ Circle_Arrow_Button | CSS:
 ```
 
 #### Tiny Up Button:
-![tiny_up_button](https://cloud.githubusercontent.com/assets/7119499/21251624/cf86fabc-c314-11e6-8f70-f6ec440ca187.png)
+![tiny_up_button](https://user-images.githubusercontent.com/7119499/41563627-cb572f90-7315-11e8-8ae4-fae10b3642c3.PNG)
 
 Tiny_Up_Button | React:
 ```
