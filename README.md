@@ -44,10 +44,17 @@ export default class Index extends React.Component {
 ```
 
 Setting Custom Classes to the default button.
-This will apply the class names you specify to the default scroll-up-button.
+This will apply the class names you specify to the scroll-up-button.
 ```jsx
     <ScrollUpButton ContainerClassName="MyOverRideClass" TransitionClassName="MyOverRideTransitionedClass"/>
 ```
+
+Setting inline styles to the default button.
+This will apply the styles to the scroll-up-button.
+```jsx
+    <ScrollUpButton style={{width: 75}} ToggledStyle={{right: 100}}/>
+```
+
 ----
 
 ### Custom Button:
@@ -61,7 +68,8 @@ export default class Index extends React.Component {
             <div>
                 <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
                     // Here you can add any react component or jsx
-                    //ScrollButton will apply the classnames given to the container of whatever you put here.
+                    // ScrollButton will apply the classnames given to the container of whatever you put here.
+                    // Changing appearence this way will only work when importing the default ScrollUpButton, importing any of the specific buttons do not except children
                 </ScrollUpButton>
             </div>
         );
@@ -79,6 +87,8 @@ export default class Index extends React.Component {
       AnimationDuration={500}
       ContainerClassName='ScrollUpButton__Container'
       TransitionClassName='ScrollUpButton__Toggled'
+      style={{}}
+      ToggledStyle={{}}
     />
 ```
 StopPosition -- PageYOffset in which you want the page to stop at when scrolling up.
@@ -92,6 +102,10 @@ AnimationDuration -- Milisecond duration of scrolling up.
 ContainerClassName -- Class name applied to the container when NOT using the default view.
 
 TransitionClassName -- Class name applied to the container to show the button when NOT using the default view.
+
+style -- style the container directly with inline styleing, can be used with any imported button.
+
+ToggledStyle -- Style the toggled state of the container directly, can be used with any imported button.
 
 ----
 
@@ -111,34 +125,18 @@ Vertical Button | Circle Arrow Button | Tiny Up Button
 
 Vertical_Button | React:
 ```
-    <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
-      <span class="BTN">UP &#8594;</span>
-    </ScrollUpButton>
-```
-Vertical_Button | CSS:
-```
-    .BTN{
-      font-size: 23px;
-    }
-    .ScrollUpButton__Container{
-      background-color: rgb(58, 56, 56);
-      position: fixed;
-      padding: 5px 10px;
-      bottom: 60px;
-      -webkit-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out;
-      -webkit-transition-property: opacity, right;
-      transition-property: opacity, right;
-      cursor: pointer;
-      opacity: 0;
-      right: -75px;
-      transform: rotate(-90deg);
-    }
+import React from "react";
+import {VerticleButton as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
 
-    .ScrollUpButton__Toggled{
-      opacity: 1;
-      right: 10px;
-    }
+export default class Index extends React.Component {
+  render() {
+    return (
+      <div>
+        <ScrollUpButton />
+      </div>
+    );
+  }
+}
 ```
 
 ----
@@ -148,35 +146,18 @@ Vertical_Button | CSS:
 
 Circle_Arrow_Button | React:
 ```
-    <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
-      <svg viewBox="0 0 32 32" >
-        <path class="path1" d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path>
-      </svg>
-    </ScrollUpButton>
-```
-Circle_Arrow_Button | CSS:
-```
-    .ScrollUpButton__Container{
-      background-color: rgb(255, 255, 255);
-      border-radius: 50%;
-      border: 5px solid black;
-      height: 50px;
-      position: fixed;
-      bottom: 20px;
-      width: 50px;
-      -webkit-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out;
-      -webkit-transition-property: opacity, right;
-      transition-property: opacity, right;
-      cursor: pointer;
-      opacity: 0;
-      right: -75px;
-    }
+import React from "react";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
 
-    .ScrollUpButton__Toggled{
-      opacity: 1;
-      right: 20px;
-    }
+export default class Index extends React.Component {
+  render() {
+    return (
+      <div>
+        <ScrollUpButton />
+      </div>
+    );
+  }
+}
 ```
 
 #### Tiny Up Button:
@@ -184,43 +165,18 @@ Circle_Arrow_Button | CSS:
 
 Tiny_Up_Button | React:
 ```
-    <ScrollUpButton ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
-      <svg viewBox="0 0 28 28" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve">
-        <path d="M26.297 20.797l-2.594 2.578c-0.391 0.391-1.016 0.391-1.406 0l-8.297-8.297-8.297 8.297c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.578c-0.391-0.391-0.391-1.031 0-1.422l11.594-11.578c0.391-0.391 1.016-0.391 1.406 0l11.594 11.578c0.391 0.391 0.391 1.031 0 1.422z"></path>
-      </svg>
-    </ScrollUpButton>
-```
-Tiny_Up_Button | CSS:
-```
-  .ScrollUpButton__Container{
-    background-color: rgb(87, 86, 86);
-    height: 30px;
-    fill: #292929;
-    position: fixed;
-    bottom: 70px;
-    width: 30px;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-transition-property: opacity, right;
-    transition-property: opacity, right;
-    cursor: pointer;
-    opacity: 0;
-    right: -75px;
-    padding-bottom: 1px;
-    padding-left: 1px;
-    padding-right: 1px;
-    transition: fill 0.5s linear;
-    -webkit-transition: fill 0.5s linear;
-  }
+import React from "react";
+import {TinyButton as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
 
-  .ScrollUpButton__Container:hover{
-    fill: white;
+export default class Index extends React.Component {
+  render() {
+    return (
+      <div>
+        <ScrollUpButton />
+      </div>
+    );
   }
-
-  .ScrollUpButton__Toggled{
-    opacity: 1;
-    right: 30px;
-  }
+}
 ```
 
 ### More To Come!!

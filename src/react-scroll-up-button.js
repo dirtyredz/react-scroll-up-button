@@ -3,7 +3,7 @@ import TweenFunctions from "tween-functions";
 import PropTypes from 'prop-types';
 import detectPassiveEvents from 'detect-passive-events';
 
-export default class ScrollUpButton extends React.Component {
+class ScrollUpButton extends React.Component {
   constructor(props){
     super(props)
     this.state={ToggleScrollUp: ''};
@@ -111,7 +111,6 @@ export default class ScrollUpButton extends React.Component {
         right: 20,
       }
     }
-
     if(this.props.children){
       const childrenWithProps = React.Children.map(this.props.children,
         (child) => React.cloneElement(child, {
@@ -119,13 +118,13 @@ export default class ScrollUpButton extends React.Component {
         })
       );
       return(
-        <aside class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick}>
+        <aside style={Object.assign({}, this.props.style, this.state.ToggleScrollUp && this.props.ToggledStyle )} class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick}>
           {childrenWithProps}
         </aside>
       );
     }else{
       return(
-        <aside class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={Object.assign({}, styles.MainStyle, this.state.ToggleScrollUp && styles.ToggledStyle )} onClick={this.HandleClick}>
+        <aside class={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={Object.assign({}, styles.MainStyle, this.props.style, this.state.ToggleScrollUp && styles.ToggledStyle, this.state.ToggleScrollUp && this.props.ToggledStyle)} onClick={this.HandleClick}>
           <svg viewBox="0 0 32 32" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" style={styles.SvgStyle}>
               <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
           </svg>
@@ -134,6 +133,101 @@ export default class ScrollUpButton extends React.Component {
     }
   }
 }
+export default ScrollUpButton
+
+export const TinyButton = (props)=>{
+  var styles={
+    MainStyle: {
+      backgroundColor: 'rgb(87, 86, 86)',
+      height: 30,
+      position: 'fixed',
+      bottom: 70,
+      width: 30,
+      WebkitTransition: 'all 0.5s ease-in-out',
+      transition: 'all 0.5s ease-in-out',
+      transitionProperty: 'opacity, right',
+      cursor: 'pointer',
+      opacity: 0,
+      right: -75,
+      zIndex: 1000,
+      fill: '#292929',
+      paddingBottom: 1,
+      paddingLeft: 1,
+      paddingRight: 1,
+      transition: 'fill 0.5s linear'
+    },
+    ToggledStyle: {
+      opacity: 1,
+      right: 30,
+    }
+  }
+  return (
+    <ScrollUpButton StopPosition={0} style={Object.assign({}, styles.MainStyle, props.style)} ToggledStyle={Object.assign({}, styles.ToggledStyle, props.ToggledStyle)}>
+      <svg viewBox="0 0 28 28" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve">
+        <path d="M26.297 20.797l-2.594 2.578c-0.391 0.391-1.016 0.391-1.406 0l-8.297-8.297-8.297 8.297c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.578c-0.391-0.391-0.391-1.031 0-1.422l11.594-11.578c0.391-0.391 1.016-0.391 1.406 0l11.594 11.578c0.391 0.391 0.391 1.031 0 1.422z"></path>
+      </svg>
+    </ScrollUpButton>
+  );
+}
+
+export const CircleArrow = (props)=>{
+  var styles={
+    MainStyle: {
+      backgroundColor: 'rgb(255, 255, 255)',
+      borderRadius: '50%',
+      border: '5px solid black',
+      height: 50,
+      position: 'fixed',
+      bottom: 20,
+      width: 50,
+      WebkitTransition: 'all 0.5s ease-in-out',
+      transition: 'all 0.5s ease-in-out',
+      transitionProperty: 'opacity, right',
+      cursor: 'pointer',
+      opacity: 0,
+      right: -75,
+    },
+    ToggledStyle: {
+      opacity: 1,
+      right: 20,
+    }
+  }
+  return (
+    <ScrollUpButton StopPosition={0} style={Object.assign({}, styles.MainStyle, props.style)} ToggledStyle={Object.assign({}, styles.ToggledStyle, props.ToggledStyle)}>
+      <svg viewBox="0 0 32 32" >
+        <path class="path1" d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path>
+      </svg>
+    </ScrollUpButton>
+  );
+}
+
+export const VerticleButton = (props)=>{
+  var styles={
+    MainStyle: {
+      backgroundColor: 'rgb(58, 56, 56)',
+      position: 'fixed',
+      bottom: 60,
+      padding: "5px 10px",
+      WebkitTransition: 'all 0.5s ease-in-out',
+      transition: 'all 0.5s ease-in-out',
+      transitionProperty: 'opacity, right',
+      cursor: 'pointer',
+      opacity: 0,
+      right: -75,
+      transform: "rotate(-90deg)"
+    },
+    ToggledStyle: {
+      opacity: 1,
+      right: 10,
+    }
+  }
+  return (
+    <ScrollUpButton StopPosition={0} style={Object.assign({}, styles.MainStyle, props.style)} ToggledStyle={Object.assign({}, styles.ToggledStyle, props.ToggledStyle)}>
+      <span style={{fontSize: 23, color: "white"}}>UP &#8594;</span>
+    </ScrollUpButton>
+  );
+}
+
 ScrollUpButton.defaultProps  = {
   ContainerClassName: 'ScrollUpButton__Container',
   StopPosition: 0,
@@ -141,6 +235,8 @@ ScrollUpButton.defaultProps  = {
   EasingType: 'easeOutCubic',
   AnimationDuration: 500,
   TransitionClassName: 'ScrollUpButton__Toggled',
+  style: {},
+  ToggledStyle: {}
 }
 ScrollUpButton.propTypes ={
   StopPosition: PropTypes.number,
