@@ -6,9 +6,12 @@ Enzyme.configure({ adapter: new Adapter() });
 import 'jsdom-global/register';
 require('raf').polyfill();
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 import ScrollUpButton from '../react-scroll-up-button';
+import {TinyButton } from '../react-scroll-up-button';
+import {VerticleButton } from '../react-scroll-up-button';
+import {CircleArrow } from '../react-scroll-up-button';
 import { expect } from 'chai';
 
 //Testing group
@@ -46,8 +49,7 @@ describe('Testing <ScrollUpButton/> Action scroll to assigned props top:', ()=>{
 });
 
 //Testing group
-describe('Testing <ScrollUpButton/> settup:', ()=>{
-  //it test a single requirment inside the test group
+describe('Testing <ScrollUpButton/> setup:', ()=>{
   //WAS componentDidMount called
   it('did call componentDidMount', () => {
     let DidMount = sinon.spy(ScrollUpButton.prototype, 'componentDidMount');
@@ -59,7 +61,6 @@ describe('Testing <ScrollUpButton/> settup:', ()=>{
   });
 
 
-  //it test a single requirment inside the test group
   //Check the ShowAtPostion default
   it('prop defaults', ()=>{
     const wrapper = mount(<ScrollUpButton />);
@@ -69,9 +70,10 @@ describe('Testing <ScrollUpButton/> settup:', ()=>{
     expect(wrapper.props().EasingType).to.equal('easeOutCubic');
     expect(wrapper.props().AnimationDuration).to.equal(500);
     expect(wrapper.props().TransitionClassName).to.equal('ScrollUpButton__Toggled');
+    expect(wrapper.props().style).to.deep.equal({});
+    expect(wrapper.props().ToggledStyle).to.deep.equal({});
   })
 
-  //it test a single requirment inside the test group
   //Check the ShowAtPostion assigned
   it('props assigned', ()=>{
     const wrapper = mount(<ScrollUpButton ShowAtPostion={200} StopPosition={100} ContainerClassName="NewClass" TransitionClassName="AnotherClass" EasingType="easeInOutBounce" AnimationDuration={1000}/>);
@@ -92,14 +94,12 @@ describe('Testing <ScrollUpButton/> current state:', ()=>{
     window.pageYOffset = 0
   });
 
-  //it test a single requirment inside the test group
   //Check the ToggleScrollUp state
   it('ToggleScrollUp should be any empty string', ()=>{
     const wrapper = mount(<ScrollUpButton />);
     expect(wrapper.state().ToggleScrollUp).to.equal('');
   })
 
-  //it test a single requirment inside the test group
   //Check the ToggleScrollUp state when scrolled down
   it('ToggleScrollUp should be ScrollUpButton__Toggled when scrolled down', ()=>{
     const wrapper = mount(<ScrollUpButton />);
@@ -109,7 +109,6 @@ describe('Testing <ScrollUpButton/> current state:', ()=>{
     expect(wrapper.state().ToggleScrollUp).to.equal('ScrollUpButton__Toggled');
   })
 
-  //it test a single requirment inside the test group
   //Check the ToggleScrollUp state when scrolled down when children is passed
   it('ToggleScrollUp should be NewClass when scrolled down, with children', ()=>{
     const wrapper = mount(
@@ -131,7 +130,7 @@ describe('Testing <ScrollUpButton/> Action scroll to default top:', ()=>{
     window.pageYOffset = 0
     //Render component
     Component = mount(<ScrollUpButton />);
-    //Settup stub and replace scrollTo function with ours.
+    //Setup stub and replace scrollTo function with ours.
     // TypeError: Attempted to wrap scrollTo which is already stubbed
     ScrollTo_Stub = sinon.stub(window, 'scrollTo').callsFake((x,y)=>{
       window.pageXOffset = x;
@@ -155,5 +154,29 @@ describe('Testing <ScrollUpButton/> Action scroll to default top:', ()=>{
       expect(Component.state().ToggleScrollUp).to.equal(''); // <-- Button should be hidden again
       done() // <-- since were asynchronous with setTimeout instruct chai that were done with the test.
     }, 500);
+  });
+});
+
+//Testing group
+describe('Testing Themed Buttons:', (done)=>{
+  let Component, ScrollTo_Stub;
+  //did it scroll the page up
+  it('did load TinyButton', (done) => {
+    const wrapper = mount(<TinyButton />);
+    expect(wrapper.find('svg').html()).to.equal('<svg viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" xml:space="preserve"><path d="M26.297 20.797l-2.594 2.578c-0.391 0.391-1.016 0.391-1.406 0l-8.297-8.297-8.297 8.297c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.578c-0.391-0.391-0.391-1.031 0-1.422l11.594-11.578c0.391-0.391 1.016-0.391 1.406 0l11.594 11.578c0.391 0.391 0.391 1.031 0 1.422z"></path></svg>');
+    done();
+  });
+
+  it('did load CircleArrow', (done) => {
+    const wrapper = mount(<CircleArrow />);
+    expect(wrapper.find('svg').html()).to.equal('<svg viewBox="0 0 32 32"><path class="path1" d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path></svg>');
+    done();
+  });
+
+  it('did load VerticleButton', (done) => {
+    const wrapper = mount(<VerticleButton />);
+    console.log(wrapper.find('span').html())
+    expect(wrapper.find('span').html()).to.equal('<span style="font-size: 23px; color: white;">UP →</span>');
+    done();
   });
 });

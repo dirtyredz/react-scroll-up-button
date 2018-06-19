@@ -24,7 +24,7 @@ class Toggle extends React.Component {
           {this.state.isToggleOn ? 'Mount react-scroll-up-button' : 'Unmount react-scroll-up-button'}
         </button>
         {this.state.isToggleOn ? null :
-          <ScrollUpButton StopPosition={0}/>
+          <ScrollUpButton />
         }
       </div>
     );
