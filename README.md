@@ -82,7 +82,7 @@ export default class Index extends React.Component {
 ```javascript
     <ScrollUpButton
       StopPosition={0}
-      TransitionBtnPosition={150}
+      ShowAtPosition={150}
       EasingType='easeOutCubic'
       AnimationDuration={500}
       ContainerClassName='ScrollUpButton__Container'
@@ -93,7 +93,7 @@ export default class Index extends React.Component {
 ```
 StopPosition -- PageYOffset in which you want the page to stop at when scrolling up.
 
-TransitionBtnPosition -- PageYOffset position at which the button will show up.
+ShowAtPosition -- PageYOffset position at which the button will show up.
 
 EasingType -- Easing option see : (https://www.npmjs.com/package/tween-functions) for available options.
 
