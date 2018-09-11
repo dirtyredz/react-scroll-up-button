@@ -1,15 +1,15 @@
 {
   "name": "react-scroll-up-button",
   "version": "1.6.0",
+  "main": "lib/react-scroll-up-button.js",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
-    "dev": "webpack-dev-server --config ./UITesting/webpack.config.js",
+    "dev": "npx webpack-dev-server --config ./UITesting/webpack.config.js --hot --inline",
     "compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha src/test/test.js -- -R spec --require babel-register",
+    "test:build": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha lib/test/test.js -- -R spec --require babel-register",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
-  "main": "lib/react-scroll-up-button.js",
   "author": "Dirtyredz | David McCLain <david.mcclain@dirtyredz.com>",
   "license": "MIT",
   "repository": {
@@ -21,12 +21,6 @@
       "env",
       "react",
       "stage-0"
-    ],
-    "plugins": [
-      "transform-runtime",
-      "react-html-attrs",
-      "transform-decorators-legacy",
-      "transform-class-properties"
     ]
   },
   "keywords": [
@@ -39,16 +33,12 @@
     "react-component"
   ],
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^6.2.0",
-    "babel-plugin-add-module-exports": "^0.1.2",
-    "babel-plugin-react-html-attrs": "^2.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-polyfill": "^6.22.0",
-    "babel-preset-env": "^1.6.0",
+    "@babel/polyfill": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.20.0",
@@ -60,22 +50,24 @@
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
     "mocha": "^3.3.0",
-    "mocha-lcov-reporter": "^1.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "raf": "^3.3.0",
     "raf-stub": "^2.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0",
     "sinon": "^2.0.0-pre.5",
-    "webpack": "^1.15.0",
-    "webpack-dev-server": "^1.16.5"
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7",
+    "webpack-merge": "^4.1.4"
   },
   "peerDependencies": {
     "react": "^15.5.4 || ^16.0.0"
   },
   "dependencies": {
-    "detect-passive-events": "^1.0.2",
-    "prop-types": "^15.5.8",
+    "detect-passive-events": "^1.0.4",
+    "prop-types": "^15.6.2",
     "tween-functions": "^1.2.0"
   }
 }

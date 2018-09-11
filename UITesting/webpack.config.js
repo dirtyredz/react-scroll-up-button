@@ -1,33 +1,25 @@
 var webpack = require('webpack');
 var path = require('path');
-module.exports = {
-  resolve: {
-    extensions: ['','.js', '.jsx']
+const merge = require("webpack-merge");
+const commonConfig = require("../webpack.common");
+
+const devConfig = {
+  mode: 'development',
+  devtool: "source-map",
+  entry: {
+    index: "./UITesting/index",
   },
-  entry: [
-    "webpack-dev-server/client?http://localhost:8080",
-    "webpack/hot/dev-server",
-    "./UITesting/index"
-  ],
-  module: {
-    loaders: [
-        {
-            test: /\.(js|jsx)$/,
-            exclude: /(node_modules)/,
-            loader: 'babel'
-        }
-    ]
+  output: {
+    path: __dirname,
+    filename: "react.js",
   },
   plugins:[
     new webpack.HotModuleReplacementPlugin()
   ],
-  output: {
-    path: './UITesting',
-    filename: "react.js",
-    publicPath: '/'
-  },
   devServer: {
     hot: true,
-    contentBase: './UITesting'
+    contentBase: __dirname,
+    port: 8080,
   }
 };
+module.exports = merge(commonConfig, devConfig, { mode: 'development' });
