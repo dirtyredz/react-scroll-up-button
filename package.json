@@ -1,14 +1,40 @@
 {
   "name": "react-scroll-up-button",
-  "version": "1.6.0",
-  "main": "lib/react-scroll-up-button.js",
+  "version": "1.5.12",
+  "main": "dist/react-scroll-up-button.js",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
-    "dev": "npx webpack-dev-server --config ./UITesting/webpack.config.js --hot --inline",
-    "compile": "babel -d lib/ src/",
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha src/test/test.js -- -R spec --require babel-register",
-    "test:build": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha lib/test/test.js -- -R spec --require babel-register",
-    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "compile": "npx babel-cli -d dist/ src/ --ignore tests",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "dev:server": "npx webpack-dev-server --config ./UITesting/webpack.config.js --hot --inline",
+    "dev:cypress": "start-server-and-test dev:server http://localhost:8080 cypress:open",
+    "dev:test": "npx jest --coverage --watch",
+    "test": "npx jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test:server": "npm run compile && npx webpack-dev-server --config ./UITesting/webpack.testing.js",
+    "test:cypress": "start-server-and-test test:server http://localhost:8080 cypress:run",
+    "prepublishOnly": "npm run compile"
+  },
+  "jest": {
+    "verbose": true,
+    "testRegex": "(/tests/.*)",
+    "globals": {
+      "window": true
+    },
+    "setupFiles": [
+      "jest-prop-type-error"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": -10
+      }
+    },
+    "collectCoverageFrom": [
+      "src/*.{js,jsx}"
+    ]
   },
   "author": "Dirtyredz | David McCLain <david.mcclain@dirtyredz.com>",
   "license": "MIT",
@@ -42,21 +68,22 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.20.0",
-    "chai": "^3.5.0",
-    "coveralls": "^2.13.1",
-    "enzyme": "^3.0.0",
-    "enzyme-adapter-react-16": "^1.0.0",
+    "coveralls": "^3.0.2",
+    "cypress": "^3.1.0",
+    "cypress-testing-library": "^2.2.1",
+    "dom-testing-library": "^3.5.1",
     "istanbul": "^1.1.0-alpha.1",
+    "jest": "^23.6.0",
+    "jest-dom": "^1.12.0",
+    "jest-prop-type-error": "^1.1.0",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
-    "mocha": "^3.3.0",
-    "mocha-lcov-reporter": "^1.3.0",
     "raf": "^3.3.0",
     "raf-stub": "^2.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-test-renderer": "^16.0.0",
-    "sinon": "^2.0.0-pre.5",
+    "react-testing-library": "^5.0.1",
+    "start-server-and-test": "^1.7.1",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.7",

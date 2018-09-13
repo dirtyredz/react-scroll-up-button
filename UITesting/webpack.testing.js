@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -26,17 +26,15 @@ module.exports = {
       }
     ]
   },
-  mode: 'development',
-  devtool: "source-map",
   entry: {
-    index: "./UITesting/index",
+    index: "./UITesting/testing",
   },
   output: {
     path: __dirname,
     filename: "react.js",
   },
   plugins:[
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     hot: true,

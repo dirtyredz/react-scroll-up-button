@@ -3,4 +3,6 @@ node_js:
   - "8"
   - "7"
   - "6.9.4"
-after_success: 'npm run coverage'
+script:
+  - npm run test
+  - npm run test:cypress

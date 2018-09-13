@@ -1,31 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {VerticleButton as ScrollUpButton} from '../src/react-scroll-up-button';
+import * as ScrollUpButtons from '../src/react-scroll-up-button';
 
 class Toggle extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {isToggleOn: false};
-
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
+  constructor() {
+    super();
+    this.state = {
+      currentBtn: 'default'
+    };
   }
 
-  handleClick() {
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn
-    }));
+  handleClick(btn) {
+    this.setState({currentBtn: btn});
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>
-          {this.state.isToggleOn ? 'Mount react-scroll-up-button' : 'Unmount react-scroll-up-button'}
-        </button>
-        {this.state.isToggleOn ? null :
-          <ScrollUpButton />
-        }
+        {Object.keys(ScrollUpButtons).map((btn,index)=>{
+          return (
+            <div key={btn+'_button'}>
+              <button style={{position: 'fixed'}} disabled={this.state.currentBtn === btn} onClick={this.handleClick.bind(this,btn)}>
+                {this.state.currentBtn === btn ? 'Unmount '+btn : 'Mount '+btn}
+              </button>
+              <br/>
+              <br/>
+            </div>
+          )
+        })}
+        {Object.keys(ScrollUpButtons).map((btn,index)=>{
+          const CurBtn = ScrollUpButtons[btn]
+          if(this.state.currentBtn === btn)
+            return <CurBtn key={btn}/>
+        })}
       </div>
     );
   }

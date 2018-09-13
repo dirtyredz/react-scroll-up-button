@@ -8,13 +8,12 @@ class ScrollUpButton extends React.Component {
   constructor(props){
     super(props)
     this.state={ToggleScrollUp: ''};
-    this.Animation = {StartPosition: 0, CurrentAnimationTime: 0, StartTime:null,AnimationFrame:null}
+    this.Animation = {StartPosition: 0, CurrentAnimationTime: 0, StartTime:null, AnimationFrame:null}
     this.HandleScroll = this.HandleScroll.bind(this)
     this.StopScrollingFrame = this.StopScrollingFrame.bind(this)
     this.ScrollingFrame = this.ScrollingFrame.bind(this)
     this.HandleClick = this.HandleClick.bind(this)
   }
-
 
   HandleScroll() {
     //window.pageYOffset = current scroll position
@@ -59,6 +58,9 @@ class ScrollUpButton extends React.Component {
         this.props.StopPosition,
         this.props.AnimationDuration
       );
+      if(YPos <= this.props.StopPosition){
+        YPos = this.props.StopPosition
+      }
       window.scrollTo(0, YPos);
       //Request another frame to be painted
       this.Animation.AnimationFrame = window.requestAnimationFrame(this.ScrollingFrame);
@@ -119,13 +121,13 @@ class ScrollUpButton extends React.Component {
         })
       );
       return(
-        <aside style={Object.assign({}, this.props.style, this.state.ToggleScrollUp && this.props.ToggledStyle )} className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick}>
+        <aside data-testid="react-scroll-up-button" style={Object.assign({}, this.props.style, this.state.ToggleScrollUp && this.props.ToggledStyle )} className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick}>
           {childrenWithProps}
         </aside>
       );
     }else{
       return(
-        <aside className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={Object.assign({}, styles.MainStyle, this.props.style, this.state.ToggleScrollUp && styles.ToggledStyle, this.state.ToggleScrollUp && this.props.ToggledStyle)} onClick={this.HandleClick}>
+        <aside data-testid="react-scroll-up-button" className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={Object.assign({}, styles.MainStyle, this.props.style, this.state.ToggleScrollUp && styles.ToggledStyle, this.state.ToggleScrollUp && this.props.ToggledStyle)} onClick={this.HandleClick}>
           <svg viewBox="0 0 32 32" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" style={styles.SvgStyle}>
               <path d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
           </svg>
@@ -142,7 +144,7 @@ export const TinyButton = (props)=>{
       backgroundColor: 'rgb(87, 86, 86)',
       height: 30,
       position: 'fixed',
-      bottom: 70,
+      bottom: 20,
       width: 30,
       WebkitTransition: 'all 0.5s ease-in-out',
       transition: 'all 0.5s ease-in-out',
@@ -207,7 +209,7 @@ export const VerticleButton = (props)=>{
     MainStyle: {
       backgroundColor: 'rgb(58, 56, 56)',
       position: 'fixed',
-      bottom: 60,
+      bottom: 40,
       padding: "5px 10px",
       WebkitTransition: 'all 0.5s ease-in-out',
       transition: 'all 0.5s ease-in-out',
@@ -248,5 +250,9 @@ ScrollUpButton.propTypes ={
       'easeInOutExpo', 'easeInCirc', 'easeOutCirc', 'easeInOutCirc', 'easeInElastic', 'easeOutElastic',
       'easeInOutElastic', 'easeInBack', 'easeOutBack', 'easeInOutBack', 'easeInBounce', 'easeOutBounce',
       'easeInOutBounce']),
-  AnimationDuration: PropTypes.number // seconds
+  AnimationDuration: PropTypes.number, // seconds
+  style: PropTypes.object,
+  ToggledStyle: PropTypes.object,
+  ContainerClassName: PropTypes.string,
+  TransitionClassName: PropTypes.string
 }
