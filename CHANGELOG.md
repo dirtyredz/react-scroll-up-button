@@ -1,8 +1,11 @@
-#1.5.12
+#1.6.1
 * **React:** Added catch if tween function tried to set scroll position past the stop position.
 * **Test:** Updated all tests, and added e2e testing.
 * **Dev:** Added cypress e2e testing and multiple package scripts for development and testing.
 * **NPM:** Moved destination directory from lib/ to dist/
+
+#1.6.0
+* **React:** Moved themed buttons to exports
 
 #1.5.11
 * **React:** Added className overrides to the default button.

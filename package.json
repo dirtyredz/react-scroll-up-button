@@ -1,10 +1,10 @@
 {
   "name": "react-scroll-up-button",
-  "version": "1.5.12",
+  "version": "1.6.1",
   "main": "dist/react-scroll-up-button.js",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
-    "compile": "npx babel-cli -d dist/ src/ --ignore tests",
+    "compile": "npx babel-cli -d dist/ src/",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "dev:server": "npx webpack-dev-server --config ./UITesting/webpack.config.js --hot --inline",
