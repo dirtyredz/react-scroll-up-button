@@ -77,7 +77,6 @@
   },
   "dependencies": {
     "detect-passive-events": "^1.0.4",
-    "object-assign": "^4.1.1",
     "prop-types": "^15.6.2",
     "tween-functions": "^1.2.0"
   }
