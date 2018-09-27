@@ -24,7 +24,7 @@ npm install react-scroll-up-button
 
 ## Usage
 
-### Default Button:   ![default_button](https://cloud.githubusercontent.com/assets/7119499/21240547/5c47751a-c2d1-11e6-9df8-5be7bbdd53de.png)
+### Default Button:   ![default_button](https://user-images.githubusercontent.com/7119499/46116181-5e9c8e00-c1c0-11e8-97cc-b20e905f0e51.PNG)
 
 ```jsx
 import React from "react";
