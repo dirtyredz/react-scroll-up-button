@@ -1,4 +1,5 @@
 // _object-assign
+import "babel-polyfill"
 import React from "react";
 import TweenFunctions from "tween-functions";
 import PropTypes from 'prop-types';
@@ -128,7 +129,7 @@ class ScrollUpButton extends React.Component {
       return(
         <aside data-testid="react-scroll-up-button" className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={Object.assign({}, styles.MainStyle, this.props.style, this.state.ToggleScrollUp && styles.ToggledStyle, this.state.ToggleScrollUp && this.props.ToggledStyle)} onClick={this.HandleClick}>
           <svg viewBox="0 0 32 32" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" style={styles.SvgStyle}>
-              <path style={{transform: "scale(1.4) translate(1px,-5px)"}} d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
+              <path transform="scale(1.4) translate(1,-5)" d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
           </svg>
         </aside>
       );

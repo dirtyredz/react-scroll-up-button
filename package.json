@@ -1,6 +1,6 @@
 {
   "name": "react-scroll-up-button",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "main": "dist/react-scroll-up-button.js",
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
@@ -42,13 +42,6 @@
     "type": "git",
     "url": "https://github.com/dirtyredz/react-scroll-up-button.git"
   },
-  "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-0"
-    ]
-  },
   "keywords": [
     "scroll",
     "scrollUp",
@@ -63,6 +56,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",

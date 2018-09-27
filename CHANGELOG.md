@@ -1,3 +1,7 @@
+#1.6.2
+* **React:** Added Transform attribute to default button for better styling.
+* **Dev:** Added Babel-polyfill for object.assign polyfill, support for ie11.
+
 #1.6.1
 * **React:** Added catch if tween function tried to set scroll position past the stop position.
 * **Test:** Updated all tests, and added e2e testing.
