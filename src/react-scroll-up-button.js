@@ -1,9 +1,8 @@
-// _object-assign
-import "babel-polyfill"
 import React from "react";
 import TweenFunctions from "tween-functions";
 import PropTypes from 'prop-types';
 import detectPassiveEvents from 'detect-passive-events';
+import objectAssign from 'object-assign'; // IE 11 support
 
 class ScrollUpButton extends React.Component {
   constructor(props){
@@ -121,13 +120,13 @@ class ScrollUpButton extends React.Component {
         })
       );
       return(
-        <aside data-testid="react-scroll-up-button" style={Object.assign({}, this.props.style, this.state.ToggleScrollUp && this.props.ToggledStyle )} className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick}>
+        <aside data-testid="react-scroll-up-button" style={objectAssign({}, this.props.style, this.state.ToggleScrollUp && this.props.ToggledStyle )} className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} onClick={this.HandleClick}>
           {childrenWithProps}
         </aside>
       );
     }else{
       return(
-        <aside data-testid="react-scroll-up-button" className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={Object.assign({}, styles.MainStyle, this.props.style, this.state.ToggleScrollUp && styles.ToggledStyle, this.state.ToggleScrollUp && this.props.ToggledStyle)} onClick={this.HandleClick}>
+        <aside data-testid="react-scroll-up-button" className={this.props.ContainerClassName + " " + this.state.ToggleScrollUp} style={objectAssign({}, styles.MainStyle, this.props.style, this.state.ToggleScrollUp && styles.ToggledStyle, this.state.ToggleScrollUp && this.props.ToggledStyle)} onClick={this.HandleClick}>
           <svg viewBox="0 0 32 32" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve" style={styles.SvgStyle}>
               <path transform="scale(1.4) translate(1,-5)" d="M19.196 23.429q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411zM19.196 16.571q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
           </svg>
@@ -165,7 +164,7 @@ export const TinyButton = (props)=>{
     }
   }
   return (
-    <ScrollUpButton {...props} style={Object.assign({}, styles.MainStyle, props.style)} ToggledStyle={Object.assign({}, styles.ToggledStyle, props.ToggledStyle)}>
+    <ScrollUpButton {...props} style={objectAssign({}, styles.MainStyle, props.style)} ToggledStyle={objectAssign({}, styles.ToggledStyle, props.ToggledStyle)}>
       <svg viewBox="0 0 28 28" version="1.1"  xmlns="http://www.w3.org/2000/svg" x="0" y="0" xmlSpace="preserve">
         <path d="M26.297 20.797l-2.594 2.578c-0.391 0.391-1.016 0.391-1.406 0l-8.297-8.297-8.297 8.297c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.578c-0.391-0.391-0.391-1.031 0-1.422l11.594-11.578c0.391-0.391 1.016-0.391 1.406 0l11.594 11.578c0.391 0.391 0.391 1.031 0 1.422z"></path>
       </svg>
@@ -196,7 +195,7 @@ export const CircleArrow = (props)=>{
     }
   }
   return (
-    <ScrollUpButton {...props} style={Object.assign({}, styles.MainStyle, props.style)} ToggledStyle={Object.assign({}, styles.ToggledStyle, props.ToggledStyle)}>
+    <ScrollUpButton {...props} style={objectAssign({}, styles.MainStyle, props.style)} ToggledStyle={objectAssign({}, styles.ToggledStyle, props.ToggledStyle)}>
       <svg viewBox="0 0 32 32">
         <path className="path1" d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path>
       </svg>
@@ -225,7 +224,7 @@ export const VerticleButton = (props)=>{
     }
   }
   return (
-    <ScrollUpButton {...props} style={Object.assign({}, styles.MainStyle, props.style)} ToggledStyle={Object.assign({}, styles.ToggledStyle, props.ToggledStyle)}>
+    <ScrollUpButton {...props} style={objectAssign({}, styles.MainStyle, props.style)} ToggledStyle={objectAssign({}, styles.ToggledStyle, props.ToggledStyle)}>
       <span style={{fontSize: 23, color: "white"}}>UP &#8594;</span>
     </ScrollUpButton>
   );

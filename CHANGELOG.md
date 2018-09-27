@@ -1,3 +1,6 @@
+#1.6.3
+* **Dev:** Removed Babel-Polyfill in favor of Object-Assign.
+
 #1.6.2
 * **React:** Added Transform attribute to default button for better styling.
 * **Dev:** Added Babel-polyfill for object.assign polyfill, support for ie11.
