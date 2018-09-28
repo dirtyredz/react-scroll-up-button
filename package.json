@@ -13,7 +13,9 @@
     "test": "npx jest --coverage --coverageReporters=text-lcov | coveralls",
     "test:server": "npm run compile && npx webpack-dev-server --config ./UITesting/webpack.testing.js",
     "test:cypress": "start-server-and-test test:server http://localhost:8080 cypress:run",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
+    "eslint": "node_modules/.bin/eslint src",
+    "eslint:fix": "node_modules/.bin/eslint src --fix"
   },
   "jest": {
     "verbose": true,
@@ -70,7 +72,13 @@
     "start-server-and-test": "^1.7.1",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.7"
+    "webpack-dev-server": "^3.1.7",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1"
   },
   "peerDependencies": {
     "react": "^15.5.4 || ^16.0.0"
