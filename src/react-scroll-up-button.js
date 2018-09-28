@@ -46,10 +46,10 @@ class ScrollUpButton extends React.Component {
   }
 
   HandleScroll() {
-    const { ShowAtPostion, TransitionClassName } = this.props
+    const { ShowAtPosition, TransitionClassName } = this.props
     // window.pageYOffset = current scroll position
-    // ShowAtPostion = position at which we want the button to show.
-    if (window.pageYOffset > ShowAtPostion) {
+    // ShowAtPosition = position at which we want the button to show.
+    if (window.pageYOffset > ShowAtPosition) {
       // styles.Toggled = the class name we want applied to transition the button in.
       this.setState({ ToggleScrollUp: TransitionClassName });
     } else {
@@ -60,9 +60,9 @@ class ScrollUpButton extends React.Component {
 
   HandleClick() {
     // Is this needed?
-    // const { ShowAtPostion } = this.props
+    // const { ShowAtPosition } = this.props
     // // For some reason the user was able to click the button.
-    // if (window.pageYOffset < ShowAtPostion) {
+    // if (window.pageYOffset < ShowAtPosition) {
     //   event.preventDefault()
     //   this.HandleScroll()
     // }
@@ -349,7 +349,7 @@ export const VerticleButton = (props) => {
 ScrollUpButton.defaultProps = {
   ContainerClassName: 'ScrollUpButton__Container',
   StopPosition: 0,
-  ShowAtPostion: 150,
+  ShowAtPosition: 150,
   EasingType: 'easeOutCubic',
   AnimationDuration: 500,
   TransitionClassName: 'ScrollUpButton__Toggled',
@@ -359,12 +359,12 @@ ScrollUpButton.defaultProps = {
 }
 
 function LessThanShowAtPosition(props, propName, componentName) {
-  const { ShowAtPostion } = props;
+  const { ShowAtPosition } = props;
   if (props[propName]) { // eslint-disable-line
     const value = props[propName];
     if (typeof value === 'number') {
-      if (value >= ShowAtPostion) { // Validate the incoming prop value againt the ShowAtPosition prop
-        return new Error(`${propName} (${value}) in ${componentName} must be less then prop: ShowAtPosition (${ShowAtPostion})`);
+      if (value >= ShowAtPosition) { // Validate the incoming prop value againt the ShowAtPosition prop
+        return new Error(`${propName} (${value}) in ${componentName} must be less then prop: ShowAtPosition (${ShowAtPosition})`);
       }
       return null
     }
@@ -379,7 +379,7 @@ ScrollUpButton.propTypes = {
     PropTypes.node,
   ]),
   StopPosition: LessThanShowAtPosition,
-  ShowAtPostion: PropTypes.number, // show button under this position,
+  ShowAtPosition: PropTypes.number, // show button under this position,
   EasingType: PropTypes.oneOf(['linear', 'easeInQuad', 'easeOutQuad', 'easeInOutQuad', 'easeInCubic',
     'easeOutCubic', 'easeInOutCubic', 'easeInQuart', 'easeOutQuart', 'easeInOutQuart', 'easeInQuint',
     'easeOutQuint', 'easeInOutQuint', 'easeInSine', 'easeOutSine', 'easeInOutSine', 'easeInExpo', 'easeOutExpo',
