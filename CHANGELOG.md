@@ -1,5 +1,6 @@
 #1.6.4
 * **Dev:** Removed Babel-Polyfill in favor spread/babel compile (I should have noticed this before hand).
+* **React:** Added custom propType validator to check StopPosition prop is less then ShowAtPosition prop.
 
 #1.6.3
 * **Dev:** Removed Babel-Polyfill in favor of Object-Assign.

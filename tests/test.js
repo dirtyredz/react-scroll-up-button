@@ -55,8 +55,6 @@ describe('React unit/intergration testing', () => {
   test('mock detect-passive-events, branch testing', async () => {
     const {
       rerender,
-      container,
-      getByTestId,
     } = render(<ScrollUpButton/>)
     detectPassiveEvents.hasSupport = true
     rerender(<ScrollUpButton/>)
@@ -64,7 +62,6 @@ describe('React unit/intergration testing', () => {
 
   test('transition class applied on scroll', async () => {
     const {
-      container,
       getByTestId,
     } = render(<ScrollUpButton/>)
     const Aside = getByTestId('react-scroll-up-button')
@@ -78,7 +75,6 @@ describe('React unit/intergration testing', () => {
 
   test('loses transition class after scrolling up', async (done) => {
     const {
-      container,
       getByTestId,
     } = render(<ScrollUpButton AnimationDuration={10}/>)
     const Aside = getByTestId('react-scroll-up-button')
@@ -97,7 +93,6 @@ describe('React unit/intergration testing', () => {
 
   test('stopPosition props stops scrolling at desired position', async (done) => {
     const {
-      container,
       getByTestId,
     } = render(<ScrollUpButton AnimationDuration={10} StopPosition={30}/>)
     const Aside = getByTestId('react-scroll-up-button')
@@ -160,7 +155,6 @@ describe('unit/intergration testing on children', () => {
 
   test('loses transition class after scrolling up', async (done) => {
     const {
-      container,
       getByTestId,
     } = render(<CircleArrow AnimationDuration={10}/>)
     const Aside = getByTestId('react-scroll-up-button')
@@ -178,3 +172,23 @@ describe('unit/intergration testing on children', () => {
   });
 
 });
+
+describe('custom proptype validators', () => {
+  console.error = err => { throw new Error(err); };
+  console.warn = warning => { throw new Error(warning); }
+
+  test('LessThanShowAtPosition thows when StopPosition is not a number.', () => {
+    expect(() => {
+      render(<ScrollUpButton StopPosition="I am not a number" />)
+    }).toThrow()
+  })
+
+  test('LessThanShowAtPosition throws when StopPosition is greater than ShowAtPosition.', () => {
+    expect(() => {
+      render(<ScrollUpButton StopPosition={100} ShowAtPostion={90} />)
+    }).toThrow()
+  });
+
+});
+
+

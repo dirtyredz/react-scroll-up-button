@@ -59,6 +59,14 @@ class ScrollUpButton extends React.Component {
   }
 
   HandleClick() {
+    // Is this needed?
+    // const { ShowAtPostion } = this.props
+    // // For some reason the user was able to click the button.
+    // if (window.pageYOffset < ShowAtPostion) {
+    //   event.preventDefault()
+    //   this.HandleScroll()
+    // }
+    // Scroll to StopPosition
     this.StopScrollingFrame();// Stoping all AnimationFrames
     this.Animation.StartPosition = window.pageYOffset;// current scroll position
     this.Animation.CurrentAnimationTime = 0;
@@ -148,7 +156,8 @@ class ScrollUpButton extends React.Component {
       return (
         <aside
           role="button"
-          tabIndex={0}
+          aria-label="Scroll to top of page"
+          tabIndex={ToggleScrollUp ? 0 : -1}
           data-testid="react-scroll-up-button"
           style={{
             ...style,
@@ -166,7 +175,8 @@ class ScrollUpButton extends React.Component {
     return (
       <aside
         role="button"
-        tabIndex={0}
+        aria-label="Scroll to top of page"
+        tabIndex={ToggleScrollUp ? 0 : -1}
         data-testid="react-scroll-up-button"
         className={`${ContainerClassName} ${ToggleScrollUp}`}
         style={{
@@ -347,12 +357,28 @@ ScrollUpButton.defaultProps = {
   ToggledStyle: {},
   children: null,
 }
+
+function LessThanShowAtPosition(props, propName, componentName) {
+  const { ShowAtPostion } = props;
+  if (props[propName]) { // eslint-disable-line
+    const value = props[propName];
+    if (typeof value === 'number') {
+      if (value >= ShowAtPostion) { // Validate the incoming prop value againt the ShowAtPosition prop
+        return new Error(`${propName} (${value}) in ${componentName} must be less then prop: ShowAtPosition (${ShowAtPostion})`);
+      }
+      return null
+    }
+    return new Error(`${propName} in ${componentName} must be a number.`);
+  }
+  return null;
+}
+
 ScrollUpButton.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
-  StopPosition: PropTypes.number,
+  StopPosition: LessThanShowAtPosition,
   ShowAtPostion: PropTypes.number, // show button under this position,
   EasingType: PropTypes.oneOf(['linear', 'easeInQuad', 'easeOutQuad', 'easeInOutQuad', 'easeInCubic',
     'easeOutCubic', 'easeInOutCubic', 'easeInQuart', 'easeOutQuart', 'easeInOutQuart', 'easeInQuint',
