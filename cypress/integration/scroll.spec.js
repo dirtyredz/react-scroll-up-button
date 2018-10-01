@@ -1,5 +1,5 @@
 beforeEach(() => {
-  cy.visit('http://localhost:8080')
+  cy.visit('http://localhost:8000')
 })
 describe('E2E testing', () => {
   it('Applies Transition class!', () => {

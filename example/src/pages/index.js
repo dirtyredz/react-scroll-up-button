@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components' // eslint-disable-line
-import * as ScrollUpButtons from '../src/react-scroll-up-button';
+import * as ScrollUpButtons from '../../../src/react-scroll-up-button';
+import './normalize.css'
 
 export default class Example extends React.Component {
   constructor() {
