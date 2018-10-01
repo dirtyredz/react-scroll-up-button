@@ -1,37 +1,43 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'; // eslint-disable-line
 import * as ScrollUpButtons from '../src/react-scroll-up-button';
 
 class Toggle extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentBtn: 'default'
+      currentBtn: 'default',
     };
   }
 
   handleClick(btn) {
-    this.setState({currentBtn: btn});
+    this.setState({ currentBtn: btn });
   }
 
   render() {
+    const { currentBtn } = this.state
     return (
       <div>
-        {Object.keys(ScrollUpButtons).map((btn,index)=>{
-          return (
-            <div key={btn+'_button'}>
-              <button style={{position: 'fixed'}} disabled={this.state.currentBtn === btn} onClick={this.handleClick.bind(this,btn)}>
-                {this.state.currentBtn === btn ? 'Unmount '+btn : 'Mount '+btn}
-              </button>
-              <br/>
-              <br/>
-            </div>
-          )
-        })}
-        {Object.keys(ScrollUpButtons).map((btn,index)=>{
+        {Object.keys(ScrollUpButtons).map(btn => (
+          <div key={`${btn}_button`}>
+            <button
+              type="button"
+              style={{ position: 'fixed' }}
+              disabled={currentBtn === btn}
+              onClick={this.handleClick.bind(this, btn)}
+            >
+              {currentBtn === btn ? `Unmount ${btn}` : `Mount ${btn}`}
+            </button>
+            <br />
+            <br />
+          </div>
+        ))}
+        {Object.keys(ScrollUpButtons).map((btn) => {
           const CurBtn = ScrollUpButtons[btn]
-          if(this.state.currentBtn === btn)
-            return <CurBtn key={btn}/>
+          if (currentBtn === btn) {
+            return <CurBtn key={btn} />
+          }
+          return null
         })}
       </div>
     );
@@ -42,7 +48,7 @@ const rootEl = document.getElementById('ReactRoot');
 ReactDOM.render(
   <div>
     <h1>REACT-SCROLL-UP-BUTTON</h1>
-    <Toggle/>
-  </div>
-  ,rootEl
+    <Toggle />
+  </div>,
+  rootEl
 );
