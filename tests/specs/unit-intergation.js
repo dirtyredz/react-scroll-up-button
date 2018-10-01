@@ -104,7 +104,6 @@ describe('React unit/intergration testing', () => {
   });
 
   test('can accept props', async () => {
-    // jest-prop-type-error will throw if props dont match proptypes
     render(<ScrollUpButton
       ShowAtPosition={200}
       StopPosition={100}

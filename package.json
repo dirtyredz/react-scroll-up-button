@@ -66,6 +66,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
+    "gatsby-cli": "^2.4.2",
     "jest": "^23.6.0",
     "jest-dom": "^1.12.0",
     "react": "^16.0.0",
@@ -82,7 +83,6 @@
   },
   "dependencies": {
     "detect-passive-events": "^1.0.4",
-    "jest-prop-type-error": "^1.1.0",
     "prop-types": "^15.6.2",
     "tween-functions": "^1.2.0"
   }
