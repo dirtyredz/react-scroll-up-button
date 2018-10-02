@@ -5,12 +5,11 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "gatsby": "^2.0.0",
-    "gatsby-plugin-manifest": "^2.0.2",
-    "gatsby-plugin-offline": "^2.0.5",
-    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-styled-components": "^3.0.0",
+    "babel-plugin-styled-components": "^1.8.0",
+    "styled-components": "^3.4.9",
     "react": "^16.5.1",
-    "react-dom": "^16.5.1",
-    "react-helmet": "^5.2.0"
+    "react-dom": "^16.5.1"
   },
   "keywords": [
     "gatsby"
@@ -18,13 +17,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "develop": "gatsby develop"
   },
-  "devDependencies": {
-    "prettier": "^1.14.2"
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
