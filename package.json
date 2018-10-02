@@ -6,8 +6,8 @@
   "scripts": {
     "compile": "npx babel-cli -d dist/ src/",
     "example:build": "cd example && npx gatsby build",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
+    "cypress:open": "npx cypress open",
+    "cypress:run": "npx cypress run",
     "dev:server": "cd example && npx gatsby develop",
     "dev:cypress": "start-server-and-test dev:server http://localhost:8000 cypress:open",
     "dev:test": "npx jest --no-cache --coverage --watch",
@@ -20,7 +20,6 @@
     "eslint:tests": "node_modules/.bin/eslint tests",
     "eslint:src": "node_modules/.bin/eslint src",
     "eslint": "npm run eslint:example && npm run eslint:cypress && npm run eslint:tests && npm run eslint:src"
-
   },
   "jest": {
     "verbose": true,
@@ -64,13 +63,13 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^3.0.2",
-    "cypress": "^3.1.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
+    "gatsby": "^2.0.14",
     "gatsby-cli": "^2.4.2",
     "jest": "^23.6.0",
     "jest-dom": "^1.12.0",
