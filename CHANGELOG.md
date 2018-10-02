@@ -2,6 +2,8 @@
 * **Dev:** Removed Babel-Polyfill in favor spread/babel compile (I should have noticed this before hand).
 * **React:** Added custom propType validator to check StopPosition prop is less then ShowAtPosition prop.
 * **React:** Fixed mispelled word ShowAtPosition, was ShowAtPostion.
+* **Dev:** Deployed demo site https://react-scroll-up-button.com
+
 #1.6.3
 * **Dev:** Removed Babel-Polyfill in favor of Object-Assign.
 
