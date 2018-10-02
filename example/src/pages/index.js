@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components' // eslint-disable-line
-import * as ScrollUpButtons from '../../../src/react-scroll-up-button';
 import './normalize.css'
+
+let ScrollUpButtons = []
+if (process.env.NODE_ENV === 'development') {
+  ScrollUpButtons = require('../../../src/react-scroll-up-button') // eslint-disable-line
+} else {
+  ScrollUpButtons = require('../../../dist/react-scroll-up-button') // eslint-disable-line
+}
 
 export default class Example extends React.Component {
   constructor() {
