@@ -5,21 +5,27 @@
   "description": "React component Scroll up button, fixed button to scrolll up to desired position",
   "scripts": {
     "compile": "npx babel-cli -d dist/ src/",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "dev:server": "npx webpack-dev-server --config ./UITesting/webpack.config.js --hot --inline",
-    "dev:cypress": "start-server-and-test dev:server http://localhost:8080 cypress:open",
+    "example:install": "cd example && npm install",
+    "example:build": "npm run compile && npm run example:install && cd example && npm run build",
+    "example:develop": "npm run example:install && cd example && npm run develop",
+    "cypress:open": "npx cypress open",
+    "cypress:run": "npx cypress run",
+    "dev:server": "npm run example:develop",
+    "dev:cypress": "start-server-and-test dev:server http://localhost:8000 cypress:open",
     "dev:test": "npx jest --no-cache --coverage --watch",
     "test": "npx jest --coverage --coverageReporters=text-lcov | coveralls",
-    "test:server": "npm run compile && npx webpack-dev-server --config ./UITesting/webpack.testing.js",
-    "test:cypress": "start-server-and-test test:server http://localhost:8080 cypress:run",
+    "test:server": "npm run compile && npx webpack-dev-server --config ./tests/server/webpack.config.js",
+    "test:cypress": "start-server-and-test test:server http://localhost:8000 cypress:run",
     "prepublishOnly": "npm run compile",
-    "eslint": "node_modules/.bin/eslint src",
-    "eslint:fix": "node_modules/.bin/eslint src --fix"
+    "eslint:example": "node_modules/.bin/eslint example/src",
+    "eslint:cypress": "node_modules/.bin/eslint cypress",
+    "eslint:tests": "node_modules/.bin/eslint tests",
+    "eslint:src": "node_modules/.bin/eslint src",
+    "eslint": "npm run compile && npm run eslint:example && npm run eslint:cypress && npm run eslint:tests && npm run eslint:src"
   },
   "jest": {
     "verbose": true,
-    "testRegex": "(/tests/.*)",
+    "testRegex": "(/tests/specs/.*)",
     "globals": {
       "window": true
     },
@@ -59,7 +65,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^3.0.2",
-    "cypress": "^3.1.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -81,7 +86,6 @@
   },
   "dependencies": {
     "detect-passive-events": "^1.0.4",
-    "jest-prop-type-error": "^1.1.0",
     "prop-types": "^15.6.2",
     "tween-functions": "^1.2.0"
   }
