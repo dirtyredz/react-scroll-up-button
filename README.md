@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/react-scroll-up-button.svg)](https://badge.fury.io/js/react-scroll-up-button)
 [![License](https://img.shields.io/npm/l/express.svg)]()
-[![Demo](https://img.shields.io/badge/Demo-Live-green.svg)](http://dirtyredz.com)
+[![Demo](https://img.shields.io/badge/Demo-Live-green.svg)](https://react-scroll-up-button.com)
 [![Build Status](https://travis-ci.org/dirtyredz/react-scroll-up-button.svg?branch=master)](https://travis-ci.org/dirtyredz/react-scroll-up-button)
 [![Coverage Status](https://coveralls.io/repos/github/dirtyredz/react-scroll-up-button/badge.svg?branch=master)](https://coveralls.io/github/dirtyredz/react-scroll-up-button?branch=master)
 
@@ -12,6 +12,10 @@ The component contains all the code neccassary to scroll to the top of the page 
 
 
 I am also adding many different style buttons that you can copy and paste into this component to quickly acheive a style you can appreciate and fits your websites look and feel.
+
+## Demo
+
+https://react-scroll-up-button.com
 
 
 ## Install
