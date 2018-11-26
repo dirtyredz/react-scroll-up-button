@@ -1,13 +1,24 @@
 import React from 'react';
 import styled from 'styled-components' // eslint-disable-line
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/prism';
 import './normalize.css'
+import './CustomButton.css'
+
 
 let ScrollUpButtons = []
+
 if (process.env.NODE_ENV === 'development') {
   ScrollUpButtons = require('../../../src/react-scroll-up-button') // eslint-disable-line
 } else {
   ScrollUpButtons = require('../../../dist/react-scroll-up-button') // eslint-disable-line
 }
+const CustomScrollUp = () => (
+  <ScrollUpButtons.default ContainerClassName="AnyClassForContainer" TransitionClassName="AnyClassForTransition">
+    <span>Custom</span>
+  </ScrollUpButtons.default>)
+
+ScrollUpButtons.Custom = CustomScrollUp
 
 export default class Example extends React.Component {
   constructor() {
@@ -62,6 +73,79 @@ export default class Example extends React.Component {
         <br />
         <ScrollDown>Scroll Down</ScrollDown>
         <p>Too see the component</p>
+        <CodeBlock>
+          {Object.keys(ScrollUpButtons).map((btn) => {
+            let str = `import React from "react";
+import {${btn} as ScrollUpButton} from "react-scroll-up-button";
+
+export default class Index extends React.Component {
+  render() {
+    return (
+      <div>
+        <ScrollUpButton />
+      </div>
+    );
+  }
+}`
+            if (btn === 'Custom') {
+              str = `import React from "react";
+import ScrollUpButton from "react-scroll-up-button";
+import ./myCssFile.css;
+
+export default class Index extends React.Component {
+  render() {
+    return (
+      <div>
+        <ScrollUpButton ContainerClassName="AnyClassForContainer" TransitionClassName="AnyClassForTransition">
+          <MyCustomReactComponent />
+        </ScrollUpButton>
+      </div>
+    );
+  }
+}`
+            }
+            if (btn === 'default') {
+              str = `import React from "react";
+import ScrollUpButton from "react-scroll-up-button";
+
+export default class Index extends React.Component {
+  render() {
+    return (
+      <div>
+        <ScrollUpButton />
+      </div>
+    );
+  }
+}`
+            }
+            const CustomCss = `.AnyClassForContainer {
+  position: fixed;
+  right: -100px;
+  bottom: 150px;
+  transition: right 0.5s;
+  cursor: pointer;
+  background-color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.AnyClassForTransition {
+  right: 20px;
+}`
+            if (currentBtn === btn) {
+              if (btn === 'Custom') {
+                return (
+                  <div>
+                    <SyntaxHighlighter language="javascript" style={dark}>{str}</SyntaxHighlighter>
+                    <SyntaxHighlighter language="css" style={dark}>{CustomCss}</SyntaxHighlighter>
+                  </div>
+                )
+              }
+              return <SyntaxHighlighter language="javascript" style={dark}>{str}</SyntaxHighlighter>
+            }
+            return null
+          })}
+        </CodeBlock>
       </Wrapper>
     );
   }
@@ -122,4 +206,9 @@ const Description = styled.h2`
 
 const ScrollDown = styled.h2`
   color: #00c1b1;
+`
+
+const CodeBlock = styled.div`
+  width: 750px;
+  margin: auto;
 `
