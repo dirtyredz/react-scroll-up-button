@@ -209,6 +209,6 @@ const ScrollDown = styled.h2`
 `
 
 const CodeBlock = styled.div`
-  width: 750px;
+  max-width: 750px;
   margin: auto;
 `
