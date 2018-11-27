@@ -21,7 +21,7 @@
     "eslint:cypress": "node_modules/.bin/eslint cypress",
     "eslint:tests": "node_modules/.bin/eslint tests",
     "eslint:src": "node_modules/.bin/eslint src",
-    "eslint": "npm run compile && npm run eslint:example && npm run eslint:cypress && npm run eslint:tests && npm run eslint:src"
+    "eslint": "npm run compile && npm run eslint:src && npm run eslint:cypress && npm run eslint:tests && npm run eslint:example"
   },
   "jest": {
     "verbose": true,

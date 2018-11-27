@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components' // eslint-disable-line
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { darcula as codeBlockStyle } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'; // eslint-disable-line
+import { darcula as codeBlockStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'; // eslint-disable-line
 import './normalize.css'
 import './CustomButton.css'
 
