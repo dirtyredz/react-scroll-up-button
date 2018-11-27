@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components' // eslint-disable-line
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/prism';
+import { darcula as codeBlockStyle } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import './normalize.css'
 import './CustomButton.css'
 
@@ -136,12 +136,12 @@ export default class Index extends React.Component {
               if (btn === 'Custom') {
                 return (
                   <div>
-                    <SyntaxHighlighter language="javascript" style={dark}>{str}</SyntaxHighlighter>
-                    <SyntaxHighlighter language="css" style={dark}>{CustomCss}</SyntaxHighlighter>
+                    <SyntaxHighlighter language="javascript" style={codeBlockStyle}>{str}</SyntaxHighlighter>
+                    <SyntaxHighlighter language="css" style={codeBlockStyle}>{CustomCss}</SyntaxHighlighter>
                   </div>
                 )
               }
-              return <SyntaxHighlighter language="javascript" style={dark}>{str}</SyntaxHighlighter>
+              return <SyntaxHighlighter language="javascript" style={codeBlockStyle}>{str}</SyntaxHighlighter>
             }
             return null
           })}
