@@ -11,7 +11,7 @@ let ScrollUpButtons = []
 if (process.env.NODE_ENV === 'development') {
   ScrollUpButtons = require('../../../src/react-scroll-up-button') // eslint-disable-line
 } else {
-  ScrollUpButtons = require('../../../dist/react-scroll-up-button') // eslint-disable-line
+  ScrollUpButtons = require('../../../dist/cjs/react-scroll-up-button') // eslint-disable-line
 }
 const CustomScrollUp = () => (
   <ScrollUpButtons.default ContainerClassName="AnyClassForContainer" TransitionClassName="AnyClassForTransition">

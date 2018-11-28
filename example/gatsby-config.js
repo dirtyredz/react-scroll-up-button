@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'react-scroll-up-buttn',
+    title: 'react-scroll-up-button',
   },
   plugins: [
     'gatsby-plugin-styled-components',
