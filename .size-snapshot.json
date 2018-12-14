@@ -1,0 +1,16 @@
+{
+  "dist/esm/react-scroll-up-button.js": {
+    "bundled": 13634,
+    "minified": 8157,
+    "gzipped": 2377,
+    "treeshaked": {
+      "rollup": {
+        "code": 5284,
+        "import_statements": 285
+      },
+      "webpack": {
+        "code": 6558
+      }
+    }
+  }
+}
