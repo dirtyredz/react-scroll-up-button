@@ -9,8 +9,10 @@
     "gatsby-plugin-styled-components": "^3.0.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-dropdown": "^1.6.3",
     "react-syntax-highlighter": "^10.1.1",
-    "styled-components": "^3.4.9"
+    "styled-components": "^3.4.9",
+    "tween-functions": "^1.2.0"
   },
   "keywords": [
     "gatsby"
