@@ -26,7 +26,9 @@
     "react/prop-types": ["error",{ "skipUndeclared" : true }],
     "react/prefer-stateless-function": 0,
     "import/no-named-as-default": 0,
-    "import/no-named-as-default-member": 0
+    "import/no-named-as-default-member": 0,
+    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }],
+    "jsx-a11y/label-has-for": [ 2, {"required": {"every": [ "id" ]}}]
   },
   "plugins": [
     "react",
