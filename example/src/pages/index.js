@@ -46,8 +46,8 @@ export default class Example extends React.Component {
     this.AnimationDurationOnChange = this.AnimationDurationOnChange.bind(this)
   }
 
-  handleClick(btn) {
-    this.setState({ currentBtn: btn });
+  componentDidMount() {
+    this.setState({ ShowAtPositionMaxValue: document.documentElement.offsetHeight - window.innerHeight - 1 })
   }
 
   EasingTypeOnChange(EasingType) {
@@ -77,8 +77,8 @@ export default class Example extends React.Component {
     this.setState({ AnimationDuration })
   }
 
-  componentDidMount() {
-    this.setState({ShowAtPositionMaxValue: document.documentElement.offsetHeight - window.innerHeight - 1})
+  handleClick(btn) {
+    this.setState({ currentBtn: btn });
   }
 
   render() {
