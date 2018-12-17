@@ -38,6 +38,7 @@ export default class Example extends React.Component {
       ShowAtPosition: defaultProps.ShowAtPosition,
       StopPosition: defaultProps.StopPosition,
       AnimationDuration: defaultProps.AnimationDuration,
+      ShowAtPositionMaxValue: 3000,
     }
     this.EasingTypeOnChange = this.EasingTypeOnChange.bind(this)
     this.StopPositionOnChange = this.StopPositionOnChange.bind(this)
@@ -76,6 +77,10 @@ export default class Example extends React.Component {
     this.setState({ AnimationDuration })
   }
 
+  componentDidMount() {
+    this.setState({ShowAtPositionMaxValue: document.documentElement.offsetHeight - window.innerHeight - 1})
+  }
+
   render() {
     const {
       currentBtn,
@@ -83,6 +88,7 @@ export default class Example extends React.Component {
       ShowAtPosition,
       StopPosition,
       AnimationDuration,
+      ShowAtPositionMaxValue,
     } = this.state
     const { defaultProps } = ScrollUpButtons.default
     const EasingTypeProp = defaultProps.EasingType !== EasingType.value && `EasingType={${EasingType.value}}`
@@ -176,7 +182,7 @@ export default class Example extends React.Component {
               id="ShowAtPosition"
               onChange={this.ShowAtPositionOnChange}
               min={StopPosition + 1}
-              max={document.documentElement.offsetHeight - window.innerHeight - 1}
+              max={ShowAtPositionMaxValue}
               value={ShowAtPosition}
               style={false} // eslint-disable-line react/style-prop-object
             />
