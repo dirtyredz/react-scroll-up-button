@@ -3,8 +3,8 @@ import styled, { createGlobalStyle } from 'styled-components' // eslint-disable-
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'; // eslint-disable-line
 import { darcula as codeBlockStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'; // eslint-disable-line
 import TweenFunctions from 'tween-functions';
-import Select from 'react-select'
-import NumericInput from 'react-numeric-input';
+import Select from 'react-select'; // eslint-disable-line
+import NumericInput from 'react-numeric-input'; // eslint-disable-line
 import './normalize.css'
 import './CustomButton.css'
 
