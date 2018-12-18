@@ -91,7 +91,7 @@ export default class Example extends React.Component {
       ShowAtPositionMaxValue,
     } = this.state
     const { defaultProps } = ScrollUpButtons.default
-    const EasingTypeProp = defaultProps.EasingType !== EasingType.value && `EasingType={${EasingType.value}}`
+    const EasingTypeProp = defaultProps.EasingType !== EasingType.value && `EasingType="${EasingType.value}"`
     const StopPositionProp = defaultProps.StopPosition !== StopPosition && `StopPosition={${StopPosition}}`
     const ShowAtPositionProp = defaultProps.ShowAtPosition !== ShowAtPosition && `ShowAtPosition={${ShowAtPosition}}`
     const AnimationDurationProp = defaultProps.AnimationDuration !== AnimationDuration && `AnimationDuration={${AnimationDuration}}`
